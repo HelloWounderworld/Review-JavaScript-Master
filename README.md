@@ -17,7 +17,7 @@ Usarei as seguintes referências:
 
 - Lógica de Programação: A construção de algoritmos e estruturas de dados, ANDRÉ WIZ VILLAR FORBELLONE e HENRI FREDERICO EBERSPACHER.
 
-Conforme a revisão dos conteúdos pelo curso da Udemy, em paralelo, irei lendo pelos lívros os conceitos que revisei para aprofundar mais ainda o conceito na minha cabeça.
+Conforme a revisão dos conteúdos pelo curso da Udemy, em paralelo, irei lendo pelos lívros os conceitos que revisei para aprofundar mais ainda o conceito na minha cabeça. No estudo de lógica de programação, irei resolvendo os exercícios do livro e verificar se resolvi certo ou não via o link do github do autor, Gabriel, acima.
 
 Outras referências complementares que irei lendo por fora, independente de qual linguagem de programação que eu esteja estudando, mas que são bons serem citados para o desencargo de consciência:
 
