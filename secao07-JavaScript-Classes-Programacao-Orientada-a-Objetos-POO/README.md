@@ -1,0 +1,1 @@
+# Seção 7 - JavaScript Classes - Programação Orientada a Objetos - POO:

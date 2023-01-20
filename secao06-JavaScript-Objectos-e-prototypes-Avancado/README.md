@@ -1,0 +1,1 @@
+# Seção 6 - JavaScript Objetos e prototypes (Avançados)

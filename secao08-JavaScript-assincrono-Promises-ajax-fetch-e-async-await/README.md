@@ -1,0 +1,1 @@
+# Seção 8 - JavaScript assínrono - Promises, Ajax, Fetch e Async/Await:

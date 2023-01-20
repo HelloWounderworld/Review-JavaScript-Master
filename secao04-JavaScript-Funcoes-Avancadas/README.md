@@ -1,0 +1,1 @@
+# Seção 4 - JavaScript Funções (Avançadas)
