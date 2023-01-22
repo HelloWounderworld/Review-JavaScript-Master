@@ -27,3 +27,9 @@ Outras referências complementares que irei lendo por fora, independente de qual
 data structures algorithms, Cory Althoff.
 
 - Clean Code, A Handbook of Agile Software Craftsmanship, Robert C. Martin.
+
+## Extensões:
+
+Foi utilizada a seguinte extensão para possibilidar a execução dos arquivos localmente em um navegador:
+
+- Live Server
