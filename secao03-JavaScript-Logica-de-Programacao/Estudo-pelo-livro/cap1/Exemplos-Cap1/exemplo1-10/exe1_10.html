@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cálculo da duração de horas de uma viagem</h1>
+    <p>
+        Elaborar um programa que leia a duração de uma viagem em dias e horas. Calcule e informe a duração total da viagem em número de horas.
+    </p>
+    <p>
+        Exemplo de dados de entrada e saída do programa (para uma viagem que dura 2 dias + 5 horas).
+    </p>
+    <ul>
+        <li>Nº Dias: 2</li>
+        <li>Nº Horas: 5</li>
+        <li>Total de Horas: 53</li>
+    </ul>
+    <script>
+        var dias = Number(prompt('Nº Dias: '));
+        var horas = Number(prompt('Nº Horas: '));
+        var diasParaHora = (dias * 24) + horas;
+        // var totalHoras = diasParaHora + horas;
+        alert('Nº Dias: ' + dias + '\nNº Horas: ' + horas + '\nTotal de Horas: ' + diasParaHora);
+    </script>
+</body>
+</html>

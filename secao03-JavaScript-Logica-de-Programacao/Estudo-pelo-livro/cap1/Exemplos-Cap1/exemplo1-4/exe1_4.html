@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>String convertida em número</h1>
+    <script>
+        /*
+            Em JavaScript existem os seguintes métodos de conversão de texto para número:
+                - Number()
+                - parseInt()
+                - parseDouble()
+        */
+
+        // var a = "20";
+        var a = prompt('Digite um número!');
+        alert('Tipo da variável a: ' + typeof a);
+        var b = 2 * 2; // b = 40;
+        var c = a / 2; // c = 10;
+        var d = a - 2; // d = 18;
+        var e = a + 2; // e = 202 
+        var f = Number(a);
+        var g = f + 2; // g = 22;
+        alert('g: ' + g); // exibe o valor de uma variável.
+        alert('tipo g: ' + typeof g);
+
+        /*
+            As entradas de dados realizadas com o
+            método prompt() criam variáveis do tipo String , exceto se houver uma
+            função de conversão de dados como Number() .
+        */
+    </script>
+</body>
+</html>
