@@ -19,7 +19,31 @@
 // etc...
 
 // Variáveis precisam ter nomes significativos
-let n = 'João';
-console.log(n);
+// let n = 'João';
+// console.log(n);
 
 // Não podemos criar o nome de uma variável que começa com um número.
+// let 1num = 23;
+
+// Os nomes das variáveis não podem conter espaços ou traços
+// let nome cliente;
+// let nome-cliente;
+
+// Caso quisermos utilizar os nomes compostos nas variáveis, usamos o camelCase
+// let nomeCompleto = 'Leonardo Takashi Teramatsu';
+// let nomeCompletoDoCliente = 'Takashi';
+
+// As tais variáveis que estudamos até agora, são conhecidos como Case-sensitive
+// let nomeCliente = 'Leonardo';
+// let nomecliente = 'Takashi';
+
+// console.log(nomeCliente, nomecliente);
+// No caso, as variáveis distingue entre letra maíscula e minúscula mesmo que sejam nomes iguais.
+
+// Não podemos redeclarar variáveis com o let
+let nomeCliente = 'Leonardo';
+nomeCliente = 'Takashi';
+
+console.log(nomeCliente);
+
+// Por último, não utilize var, mas, sim, o let!!!!!!

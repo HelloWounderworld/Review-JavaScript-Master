@@ -336,6 +336,47 @@ No exemplo acima, o código vai até funcionar. Mas imagina se vc tiver um códi
 
 Não podemos começar o nome de uma variável com um número.
 
+    // Não podemos criar o nome de uma variável que começa com um número.
+    // let 1num = 23;
+
+No caso, uma boa prática seria vc sempre, na medida do possível, a não ser que vc trabalhe com funções consultoras, sempre definir os nomes em letras minúsculas.
+
+Não podemos colocar espaços ou traços nos nomes das variáveis
+
+    // Os nomes das variáveis não podem conter espaços ou traços
+    // let nome cliente;
+    // let nome-cliente;
+
+Caso quisermos definir um nome composto, vamos ter que utilizar o camelCase
+
+    // Caso quisermos utilizar os nomes compostos nas variáveis, usamos o camelCase
+    let nomeCompleto = 'Leonardo Takashi Teramatsu';
+    let nomeCompletoDoCliente = 'Takashi';
+
+As tais variáveis que estudamos até agora, são conhecidos como Case-sensitive
+
+    // As tais variáveis que estudamos até agora, são conhecidos como Case-sensitive
+    let nomeCliente = 'Leonardo';
+    let nomecliente = 'Takashi';
+
+    console.log(nomeCliente, nomecliente);
+    // No caso, as variáveis distingue entre letra maíscula e minúscula mesmo que sejam nomes iguais.
+
+Não podemos redeclarar variáveis com o let
+
+    // Não podemos redeclarar variáveis com o let
+    let nomeCliente = 'Leonardo';
+    nomeCliente = 'Takashi';
+
+    console.log(nomeCliente);    
+
+No caso, ao rodarmos o código acima, vamos ver que teremos um retorno da última definição da variável
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula07-Variaveis-com-let/index.js"
+    Takashi
+
+Por último, não utilize var, mas, sim, o let!!!!!! No caso, sempre que vc pensar em algo que vai variar, utilize o let e não o var, pois o var está bem obsoleto por ele ser antigo.
+
 ## Aula 08 - Constantes com const:
 
 ## Aula 09 - Correção:
