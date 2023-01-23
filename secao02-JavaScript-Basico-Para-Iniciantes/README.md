@@ -278,6 +278,64 @@ Assim, se rodarmos teremos o seguinte.
     leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula07-Variaveis-com-let/index.js"
     Qualquer valor
 
+No caso, ao longo do processo, vc pode, tbm, ficar modficando o valor da variável como seguinte:
+
+    let nome; // Declarou a variável.
+    nome = 'Leonardo'; // Inicializando a variável
+    console.log(nome);
+    nome = 'Takashi';
+    console.log(nome);
+
+Ao executarmos o código acima, temos
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula07-Variaveis-com-let/index.js"
+    Leonardo
+    Takashi
+
+Lembre-se uma vez declarado um nome, ela não pode ser declarada novamente como seguinte 
+
+    let nome; // Declarou a variável.
+    nome = 'Leonardo'; // Inicializando a variável
+    console.log(nome);
+    nome = 'Takashi';
+    console.log(nome);
+
+    let nome;
+
+Se rodarmos o código acima, será exibido a seguinte mensagem
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula07-Variaveis-com-let/index.js"
+    /home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula07-Variaveis-com-let/index.js:15
+    let nome;
+        ^
+
+    SyntaxError: Identifier 'nome' has already been declared
+        at wrapSafe (internal/modules/cjs/loader.js:1001:16)
+        at Module._compile (internal/modules/cjs/loader.js:1049:27)
+        at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+        at Module.load (internal/modules/cjs/loader.js:950:32)
+        at Function.Module._load (internal/modules/cjs/loader.js:790:12)
+        at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)
+        at internal/main/run_main_module.js:17:47
+
+Além disso, em variáveis, não podemos definir os nomes com as palavras reservadas.
+
+    // Não podemos criar variáveis com palavras reservadas
+    // let let;
+    // let console;
+    // let if;
+    // etc...
+
+Um outro ponto importante seria que as variáveis precisam ter nomes significativos, para boas práticas.
+
+    // Variáveis precisam ter nomes significativos
+    let n = 'João';
+    console.log(n);
+
+No exemplo acima, o código vai até funcionar. Mas imagina se vc tiver um código enorme? Se definirmos os nomes das variáveis de forma totalmente sem sentido, isso dificultaria demais a manutenção ou correção de algum erro.
+
+Não podemos começar o nome de uma variável com um número.
+
 ## Aula 08 - Constantes com const:
 
 ## Aula 09 - Correção:
