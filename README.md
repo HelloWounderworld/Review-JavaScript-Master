@@ -7,7 +7,7 @@ Usarei as seguintes referências:
 
 - Curso de JavaScript e TypeScript do básico ao avançado, Luiz Otávio Miranda.
 
-- JavaScript The Definitive Guide - Master the world's Most-Used Programming Language, 6th and Seventh Edition, David Flanagan.
+- JavaScript The Definitive Guide - Master the world's Most-Used Programming Language, Seventh Edition, David Flanagan.
 
 - Padrões JavaScritp - Construa Aplicações mais robustas usando padrões de projeto e de pogramação, Stoyan Stefanov.
 
