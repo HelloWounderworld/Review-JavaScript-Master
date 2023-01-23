@@ -377,6 +377,8 @@ No caso, ao rodarmos o código acima, vamos ver que teremos um retorno da últim
 
 Por último, não utilize var, mas, sim, o let!!!!!! No caso, sempre que vc pensar em algo que vai variar, utilize o let e não o var, pois o var está bem obsoleto por ele ser antigo.
 
+    https://medium.com/@codingsam/awesome-javascript-no-more-var-working-title-999428999994
+
 ## Aula 08 - Constantes com const:
 
 ## Aula 09 - Correção:
