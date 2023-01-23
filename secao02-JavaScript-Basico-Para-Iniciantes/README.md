@@ -90,6 +90,103 @@ Vamos criar o arquivo index.js e, por hora, vamos colocar um console.log nele pa
 
     console.log('Hello WounderWorld!');
 
+Em seguida, no mesmo diretório, vamos criar um arquivo index.html.
+
+Nesse arquivo, se vc colocar na primeira linha "!" ou "html:5" vc verá que o VSCode mostrará as opções de uma configuração do template padrão para vc iniciar a sua codificação.
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    </html>
+
+Só vamos mudar o lang para "pt-BR" e, por hora, o 
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+Não serão necessários, então podemos apaga-las.
+
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    </html>
+
+Agoro, no title, vamos colocar o seguinte.
+
+    <title>Minha primeira página HTML</title>
+
+Em seguida, vamos colocar a tag script para chamarmos o arquivo .js. 
+
+Antes disso, quero comentar uma coisa sobre isso. É recomendável que a tag script, nas práticas usuais, ela seja chamado dentro da tag head. Entretanto, por hora, nessa aula vamos chamar a tag script dentro do body.
+
+No caso, chamar a tag script dentro de head tem os seus riscos, pois dependendo de qual script vc irá querer importar, isso poderia deixar o carregamento da sua página no navegador muito lento, pois o head será o primeiro a ser carregado do que o body, sendo que o conteúdo mesmo a ser exibido ficaria no body.
+
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Minha primeira página HTML</title>
+    </head>
+    <body>
+        <script>
+            // Um comentário
+            console.log('Hello WounderWorld');
+            console.log('Este trecho será exibido no Console do navegador!');
+        </script>
+    </body>
+    </html>
+
+Um macete que vc pode usar caso as indentações estiverem fora do seu lugar, seria clicar com o botão direto do mouse e selecionar a opção "Format Document".
+
+Para rodarmos esse arquivo html, eu estou usando a extensão chamada Live Server. Porém, se quiser uma forma mais padrão/analógico, vc poderia simplesmente clicar duas vezes no arquivo index.html que ela abrirá em um navegador automaticamente.
+
+Mas, agora, vamos transferir todo o trecho do console.log que colocamos dentro da tag script dentro do arquivo index.js e nessa tag script vamos colocar o seguinte para importar o arquivo index.js.
+
+    <script src="./index.js"></script>
+
+No caso, especifiquei no script o caminho em que se encontra o index.js e pedir para ele considerar o que está dentro desse arquivo index.js.
+
+Vamos brincar um pouco do método "alert()" dentro de HTML. Lembre-se que o alert, ele é um método que bloqueia outros métodos ou compilações posteriores até que o usuário não faça o método alert parar de funcionar, "clicando no ok".
+
+O Nodejs não vai reconhecer o método "alert", no caso, se eu colocar o alert no arquivo index.js
+
+    alert('Olá mundo!');
+
+E rodar somente o arquivo index.js irá aparecer a seguinte mensagem abaixo.
+
+    /home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula06-Navegador-vs-Node-HTML-mais-JavaScript/index.js:5
+    alert('Olá mundo!');
+    ^
+
+    ReferenceError: alert is not defined
+        at Object.<anonymous> (/home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula06-Navegador-vs-Node-HTML-mais-JavaScript/index.js:5:2)
+        at Module._compile (internal/modules/cjs/loader.js:1085:14)
+        at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+        at Module.load (internal/modules/cjs/loader.js:950:32)
+        at Function.Module._load (internal/modules/cjs/loader.js:790:12)
+        at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)
+        at internal/main/run_main_module.js:17:47
+
+Mas, ao rodarmos pelo index.html no navegador, esse método será executado.
+
+Para deixarmos mais profissional a organização dos arquivos, geralmente, é usual criarmos uma pasta em que tenha somente arquivos JavaScript e outra que tenha somente arquivos html para exibição. Por hora, vamos criar um diretório novo chamado "js" e dentro dela vc move o arquivo index.js. Feito isso, será necessário, no script, configurar uma nova rota, pois agora o arquivo index.js não se encontra no mesmo nível.
+
+    <script src="./js/index.js"></script>
+
 ## Aula 07 - Variáveis com let:
 
 ## Aula 08 - Constantes com const:
