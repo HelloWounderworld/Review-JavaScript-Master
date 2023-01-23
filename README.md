@@ -21,6 +21,10 @@ Conforme a revisão dos conteúdos pelo curso da Udemy, em paralelo, irei lendo 
 
 Outras referências complementares que irei lendo por fora, independente de qual linguagem de programação que eu esteja estudando, mas que são bons serem citados para o desencargo de consciência:
 
+- Fundamentos Matemáticos para a Ciências da Computação: Matemática Discreta e suas Aplicações - Sétima Edição, Judth L. Gersting.
+
+- Fundamentos de lógica matemática, Alexandre Luis Magalhães Levada.
+
 - Introduction to Algorithms, Fouths Edition. Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein
 
 - The Self-Taught Computer Scientist - The beginner’s guide to

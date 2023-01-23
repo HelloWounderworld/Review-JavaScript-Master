@@ -188,6 +188,95 @@ Para deixarmos mais profissional a organização dos arquivos, geralmente, é us
     <script src="./js/index.js"></script>
 
 ## Aula 07 - Variáveis com let:
+Começando com um arquivo index.js e dentro dela colocamos o seguinte
+
+    console.log('João nasceu em 1984.');
+    console.log('Em 2000 João conheceu Maria.');
+    console.log('João casou-se com Maria em 2012.');
+    console.log('Maria teve 1 filho com João em 2015.');
+    console.log('O filho de João se chama Eduardo.');
+
+Agora, note que, dentro desse conjunto de consoles tem um elemento muito repetitivo, "João". No caso, seria interessante abstrair esse nome repetido dentro da memória. Para isso, vamos criar uma variável.
+
+Em JavaScript, temos as seguintes formas de criamos as variáveis:
+
+    var
+
+    let
+
+    const
+
+No caso, vamos aprender a manusear a criação de variável via "let" e entender as funcionalidades deles. No caso, no arquivo index.js colocamos o seguinte:
+
+    let nome = 'João';
+
+    console.log('João nasceu em 1984.');
+    console.log('Em 2000 João conheceu Maria.');
+    console.log('João casou-se com Maria em 2012.');
+    console.log('Maria teve 1 filho com João em 2015.');
+    console.log('O filho de João se chama Eduardo.');
+
+No caso, agora, vamos substituir essa variável no console, em todos os pontos em que aparece o nome, "João".
+
+    let nome = 'João';
+
+    console.log(nome, 'nasceu em 1984.');
+    console.log('Em 2000', nome,'conheceu Maria.');
+    console.log(nome, 'casou-se com Maria em 2012.');
+    console.log('Maria teve 1 filho com', nome,'em 2015.');
+    console.log('O filho de', nome,'se chama Eduardo.');
+
+Ao rodarmos, vamos ver que tudo estará funcionando como antes
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula07-Variaveis-com-let/index.js"
+    João nasceu em 1984.
+    Em 2000 João conheceu Maria.
+    João casou-se com Maria em 2012.
+    Maria teve 1 filho com João em 2015.
+    O filho de João se chama Eduardo.
+
+Agora, para vermos a vantagem disso, seria se modificarmos o nome, "João", para um outro nome, não teremos nenhum trabalho de termos que ficar trocando o nome, manualmente, uma por uma.
+
+    let nome = 'Takashi';
+
+    console.log(nome, 'nasceu em 1984.');
+    console.log('Em 2000', nome,'conheceu Maria.');
+    console.log(nome, 'casou-se com Maria em 2012.');
+    console.log('Maria teve 1 filho com', nome,'em 2015.');
+    console.log('O filho de', nome,'se chama Eduardo.');
+
+Ao rodarmos o código, podemos ver que no lugar de João foi trocado pelo nome Takashi que foi a modificação feita na variável nome.
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula07-Variaveis-com-let/index.js"
+    Takashi nasceu em 1984.
+    Em 2000 Takashi conheceu Maria.
+    Takashi casou-se com Maria em 2012.
+    Maria teve 1 filho com Takashi em 2015.
+    O filho de Takashi se chama Eduardo.
+
+Agora, conhecendo mais um pouco das fucionalidades dessa variável.
+
+Podemos declarar uma variável mas não definirmos nada para ela.
+
+    let nome;
+
+    console.log(nome);
+
+No caso, ao rodarmos o arquivo para verificarmos o que está acontecendo, será devevolvido um valor "undefined" que indica que não foi definindo nenhum valor para essa variável.
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula07-Variaveis-com-let/index.js"
+    undefined
+
+No caso, se quisermos definir algum valor nessa variável sem definição, bastaríamos fazer o seguinte
+
+    let nome; // Declarou a variável.
+    nome = 'Qualquer valor'; // Inicializando a variável
+    console.log(nome);
+
+Assim, se rodarmos teremos o seguinte.
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/secao02-JavaScript-Basico-Para-Iniciantes/Aula07-Variaveis-com-let/index.js"
+    Qualquer valor
 
 ## Aula 08 - Constantes com const:
 
