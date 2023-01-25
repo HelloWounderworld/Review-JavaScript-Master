@@ -881,10 +881,131 @@ E a terceira maneira, que temos para conversão de número, que é a mais fácil
 Mas não vai adiantar passar uma string dentro do Number, assim como nos outros métodos acima, uma string que não seja um número como conteúdo, pois será retornado o NaN.
 
 ## Aula 15 - alert, confirm e prompt (Navegador):
+Vamos aprender a utilizar algumas funções para facilitar pela frente em relação aos exercícios que estão por vir.
+
+Para isso, vamos aprender sobre as funções alert, confirm e prompt.
+
+Para isso, claro que vamos ter que criar arquivos htmls. No caso, vamos criar o arquivo index.html e script.js, donde esse arquivo js, será colocado dentro do diretório js que vamos criar para essa aula.
+
+No index.html, vamos criar o arquivo padrão
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    </html>
+
+Daí, na tag title vamos colocar "Título da página" e no body colocar o script importando o script.js
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Título da página</title>
+    </head>
+    <body>
+        
+        <script src="js/script.js"></script>
+    </body>
+    </html>
+
+Agora, no script.js vamos realizar o seguinte
+
+    alert('Com a nossa mensagem.');
+
+Usando o Live Server, vamos abrir esse arquivo index.html no navegador.
+
+Visto que o alert que definimos na script.js rodou, vale reforçar um ponto aqui. O alert não faz parte da linguagem JavaScript, como prova disso, se vc rodar o arquivo script.js, verá que o nodejs não reconhecerá o alert. Outro detalhe que seria legal saber, é que tais funções, tanto as que iremos aprender aqui, quanto várias delas que iremos ver adiante, podemos rodar pelo Console do navegador, Ctrl + F12.
+
+Vamos abrir o Console do navegador do index.html, e nela vamos colocar o objeto window.
+
+    window
+    Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+
+Aparecerá algo dessa natureza.
+
+Você consegue ver que dentro desse objeto tem muita, mas muita, coisa dentro dela. Ela, no caso, constam todos os elementos que compõe a janela que vc abriu, index.html.
+
+No caso, o que eu quero que vc entenda com toda essa discussão? Que o alert é um tipo de atalho para o comando window.alert().
+
+    window.alert('Mensagem')
+
+Se tu colocar isso no Console, aparecerá a modal de alerta igual ao do que foi definido no script.js.
+
+Temos mais duas funções que queremos falar ainda, que é o confirm e o prompt.
+
+No caso, primeiro, vendo a funcionalidade do confirm, se rodarmos no Console o seguinte
+
+    window.confirm('Deseja realmente pagar?');
+
+Será exibido uma modal de em que aparecerá a msg que foi colocado dentro da função acima, só que com a diferença de que, desta vez, além do botão "ok", aparecerá o botão "cancelar", diferente do alert que tem apenas o "ok". Assim, percebe-se que quando clicamos no "ok", será retornado o valor true no Console, e se clicarmos no "cancelar" será exibido o valor false no Console.
+
+Agora, por fim, a outra função que queremos ensinar aqui é o prompt. No caso, o promtp a funcionalidade que é acrescentada nela é que teremos uma aba em que poderemos colocar alguma informação nela, junto com os botões "ok" e "cancelar". Para testarmos basta jogar o seguinte no Console
+
+    window.prompt('Digite o seu nome:');
+
+Assim, ao colocarmos alguma informação dentro da caixa de msg, por exemplo o seu nome e apertarmos o "ok" no Console será exibido a informação que foi colocado. Caso vc clique em cancelar, independente de se vc colocou ou não alguma informação na caixa, aparecerá a msg null no Console
+
+    window.prompt('Digite o seu nome:');
+    'Leonardo'
+    window.prompt('Digite o seu nome:');
+    null
+
+No caso, são essas três funções que queríamos te ensinar nessa aula. Especificamente, chamamo-as de funções, mas o certo é que eles são métodos, pois são funções que ficam guardadas dentro de objetos e se estiver fora do objeto é uma função.
+
+Em todo caso, não precisamos chamar o window para executarmos tais métodos, no Console, podemos digitar diretamente os nomes dos métodos.
+
+Outro detalhe importante, seria o seguinte. Observe o que é retornado no Console quando rodamos o alert, após clicarmos no "ok"
+
+    alert('Mensagem')
+    undefined
+
+Esse undefined, seria pelo fato de que esse método é um tipo que não retona nada mesmo. Diferente dos outro dois métodos confirm e prompt. O que queremos dizer com isso, seria que para os métodos confirm e prompt, pelo fato de retornar algum valor, podemos capturar elas no código.
+
+Um exemplo disso seria colocando o seguinte no Console
+
+    const confirma = confirm('Realmente deseja apagar?');
+
+Assim, na caixa de msg que aparecer, se clicarmos ok irá retornar undefined, mas ao jogarmos confirma no Console, vc verá que ele terá o valor true
+
+    const confirma = confirm('Realmente deseja apagar?');
+    undefined
+    confirma
+    true
+
+Ou seja, a variável confirma capturou o valor que o confirm devolveu.
+
+Vamos experimentar isso com o let.
+
+    let confirma = confirm('Realmente deseja apagar?');
+
+Se clicarmos em "cancelar" e colocar a variável confirma em Console, teremos o seguinte
+
+    let confirma = confirm('Realmente deseja apagar?');
+    undefined
+    confirma
+    false
+
+Analogamente, isso vale para o prompt.
+
+Agora, vamos te passar o exerício seguinte.
+
+No script.js, vamos definir duas prompts que solicita número e quero que vc configure um alert em que mostrará o resultado da soma desses dois números.
 
 ## Aula 16 - Exercícios - Solução:
+Foi feito o exercício acima.
 
 ## Aula 17 - Exercício com variáveis:
+Vamos te passar um exercício.
 
 ## Aula 18 - Mais sobre strings:
 
