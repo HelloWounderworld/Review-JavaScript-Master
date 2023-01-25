@@ -651,6 +651,234 @@ Logo, levantando uma lista de todos os dados primitivos são
 Ainda não vimos symbol, pois é um conceito mais avançado e será visto pela frente.
 
 ## Aula 14 - Operadores aritméticos, de atribuição e incremento:
+Vamos abordar sobre operadores Aritméticos, de Atribuição e Incremento.
+
+### Operadores Aritméticos:
+São eles:
+
+- Adição / Concatenação: +
+
+- Subtração: -
+
+- Divisão: /
+
+- Multiplicação: *
+
+- Potenciação: **
+
+- Resto da divisão: %
+
+Obs: Na matemática, não precisamos de divisão, subtração, potenciação e resto da divisão, quando trabalhamos em algum corpo ou anel, bastaria termos a Adição e a Múltiplicação, pois a subtração e a divisão, em alguns casos, acabam sendo a consequência dessas duas operações.
+
+No caso, como na matemática, aqui tbm as operações tem suas precedências
+
+    const num1 = 5;
+    const num2 = 10;
+    const num3 = 7;
+    console.log(num1 + num2);
+    console.log(num1 - num2);
+    console.log(num1 * num2);
+    console.log(num1 / num2);
+    console.log(num1 ** num2);
+    console.log(num2 % num1);
+    console.log(num1 % num2);
+    console.log(num1 + num2 * num3);
+
+E a forma para alterarmos as precedências seria usando o entre parênteses, "()".
+
+    console.log((num1 + num2) * num3);
+
+No caso, a ordem das precedências seria o seguinte, prioridade de cima para baixo:
+
+    ()
+    **
+    * / %
+    + -
+
+Se, por acaso, usarmos duas ou três operações diferentes que estão na mesma precedência? Nesse caso, a leitura será feita de esquerda para a direita
+
+    console.log(num1 * num2 / num3);
+
+Ou seja, no exemplo acima, visto que * e / estão na mesma ordem de precedência, a operação será feita, primeiro, multiplicação e, segundo, a divisão, ou seja, de esquerda para direita.
+
+Agora, um macete que é possível fazer para os operadores são os seguintes
+
+    let contador = 1;
+    contador++; // é o mesmo que contador = contador + 1
+    console.log(contador);
+    contador--; // é o mesmo que contador = contador - 1
+    console.log(contador);
+
+### Operadores de Incremento:
+No caso, usando a variável let, pois será modificado o seu valor, vamos conseguir realizar uma operação de conta básica abreviada quando se é um acrescento de 1 ou diminução de 1. Da mesma forma que essas abreviações podem estar antes ou depois do nome da variável
+
+    let contador2 = 1;
+    ++contador2;
+    console.log(contador2);
+    --contador2;
+    console.log(contador2);
+
+Em ambos os casos, será exibido o mesmo resultado.
+
+Mas, então, qual é a diferença entre colocar a abreviação antes e depois do nome da variável. No caso:
+
+- Colocando antes: primeiro faz a conta e depois retorna o seu valor
+
+- Colocado depois: Ele executa a ação que estou pedindo para depois realizar o incremento do valor 1.
+
+Para verificarmos essas duas diferenças de forma nítida, vamos fazer o seguinte:
+
+    let contadorPos = 1;
+    console.log(contadorPos++);
+
+Se rodarmos o comando acima, vamos ter o seguinte retorno pelo terminal
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula14-Opradores-Aritmeticos-de-Atribuicao-e-Incremento/index.js"
+    1
+
+Ou seja, parece que não foi feito a conta, mas, na verdade, já foi feito, mas antes de realizar a conta, primeiro, foi executado a ação, nesse caso exibir pelo console.log, para depois realizar a soma. Como prova disso, ao colocarmos o seguinte
+
+    let contadorPos = 1;
+    console.log(contadorPos++);
+    console.log(contadorPos);
+
+Realizando a execução da mesma, será retornado o seguinte pelo terminal:
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula14-Opradores-Aritmeticos-de-Atribuicao-e-Incremento/index.js"
+    1
+    2
+
+Ou seja, onde é mostrado 1, significa que, antes mesmo de realizar a soma, primeiro, foi executado a ação, nesse caso de exibir pelo console.log, para depois realizar a soma, como ocorre na exibição do segundo  e que consta 2 na exibição.
+
+Agora, quando realizo o pré-incremento, como seguinte
+
+    let contadorPre = 1;
+    console.log(++contadorPre);
+    console.log(contadorPre);
+
+Será exibido no terminal o seguinte resultado
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula14-Opradores-Aritmeticos-de-Atribuicao-e-Incremento/index.js"
+    2
+    2
+
+Ou seja, significa que, primeiro, foi feito o incremento e, em seguida, foi feito executado a ação, no caso a exibição.
+
+O mesmo vale para o operador de decremento, "--". Então, da mesma forma que temos o pré-incremento e pós-decremento, pelo ++, temos para o decremento o mesmo.
+
+Um detalhe importante, é que se fizermos o seguinte
+
+    let contador = 1;
+    contador++; // é o mesmo que contador = contador + 1
+    console.log(contador);
+
+Tanto faz se o contador estará com pós ou pré incremento, em ambos os casos será exibido o valor acrescentado pelo console.log de cima. O que, no caso, precisaria tomar cuidado é pedir para que o console.log exiba o tal processo de incremento e isso não entra em boas práticas, visto a natureza dessas operações que vimos acima.
+
+## Operadores de Atribuição:
+Lembre-se, que os operadores de incremento e decremento são feitas o acrescento e diminuição em 1, apenas. Se vc quiser colocar outros valores para serem acrescentados, deverá realizar o seguinte
+
+    let razao = 2
+    let contadorOutros = 0;
+    contadorOutros = contadorOutros + razao;
+    console.log(contadorOutros);
+    contadorOutros = contadorOutros + razao;
+    console.log(contadorOutros);
+    contadorOutros = contadorOutros + razao;
+    console.log(contadorOutros);
+    contadorOutros = contadorOutros + razao;
+    console.log(contadorOutros);
+
+No caso, acima, temos uma representação de uma progressão aritmética na razão 2 com o elemento inicial da sequência igual à 0. Daí, a cada passo em que repetimos a tal operação acima, será acrescentado o valor de 2 para cada passo.
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula14-Opradores-Aritmeticos-de-Atribuicao-e-Incremento/index.js"
+    2
+    4
+    6
+    8
+
+Mas, até para esse caso tbm, para atribuir diferentes valores que não seja 1, temos uma abreviação tbm. No caso, seria a seguinte forma
+
+    let r = 5;
+    let contadorAbrevia = 0;
+    contadorAbrevia += r;
+    console.log(contadorAbrevia);
+    contadorAbrevia += r;
+    console.log(contadorAbrevia);
+    contadorAbrevia += r;
+    console.log(contadorAbrevia);
+
+Disso, será exibido o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula14-Opradores-Aritmeticos-de-Atribuicao-e-Incremento/index.js"
+    5
+    10
+    15
+
+No caso, o processo anterior, abreviadamente, podemos realizar o mesmo processo para qualquer qualquer operador (-=, *=, /=, **=, %=).
+
+Obs: vc precisa tomar cuidado tbm dos tipos de dados que vc utiliza para realizar as contas. No caso, se vc fizer o seguinte
+
+    let numero1 = 10;
+    let numero2 = 'Leonardo';
+    console.log(numero1 * numero2);
+
+Ao realizarmos a conta acima, será retornado o NaN (Not a Number)
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula14-Opradores-Aritmeticos-de-Atribuicao-e-Incremento/index.js"
+    NaN
+
+Assim, como em outros tipos de dados primitivos.
+
+Teremos casos, em que a conta será feito, quando, por exemplo, se uma string for um número dentro do conteúdo. Mas o melhor caso é sempre termos certeza de que as contas que estamos fazendo seja um número.
+
+Para isso, podemos tbm, sempre antes que façamos alguma conta, usemos uma conversão como parseInt(), Number(), etc...
+
+    let n1 = 10;
+    let n2 = parseInt('5');
+    console.log(n1 + n2);
+    console.log(typeof n2);
+    console.log(n1 * n2);
+
+Mas lembre-se que o parseInt() ele é um método que devolve um número inteiro, sem importar que tal número dentro da string seja um número flutuante.
+
+    let n1 = 10;
+    let n2 = parseInt('5');
+    let n3 = parseInt('5.2');
+    console.log(n1 + n2);
+    console.log(typeof n2);
+    console.log(n1 * n2);
+    console.log(n3);
+
+No exemplo acima, o n3 será um 5 e não 5.2.
+
+Para não perdermos a tal exibição de até números flutuante, precisamos usar um outro método, parseFloat()
+
+    let n1 = 10;
+    let n2 = parseInt('5');
+    let n3 = parseInt('5.2');
+    let n4 = parseFloat('5.2');
+    console.log(n1 + n2);
+    console.log(typeof n2);
+    console.log(n1 * n2);
+    console.log(n3);
+    console.log(n4);
+
+E a terceira maneira, que temos para conversão de número, que é a mais fácil e não tem nenhuma distinção se é ou não número flutuante, seria o Number().
+
+    let n1 = 10;
+    let n2 = parseInt('5');
+    let n3 = parseInt('5.2');
+    let n4 = parseFloat('5.2');
+    let n5 = Number('5');
+    let n6 = Number('5.2');
+    console.log(n1 + n2);
+    console.log(typeof n2);
+    console.log(n1 * n2);
+    console.log(n3);
+    console.log(n4);
+    console.log(n5, n6);
+
+Mas não vai adiantar passar uma string dentro do Number, assim como nos outros métodos acima, uma string que não seja um número como conteúdo, pois será retornado o NaN.
 
 ## Aula 15 - alert, confirm e prompt (Navegador):
 
