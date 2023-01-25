@@ -84,7 +84,7 @@ No caso, podemos usar "//" para tonar algum código como comentário.
 A vantagem disso seria que os comentários acima, quando rodado o arquivo para compilação, ele será desconsiderado/não será executado.
 
 ## Aula 06 - Navegador vs Node (HTML + JavaScript):
-Vamos aprender a mesclaro arquivo HTML com o arquivo JavaScript.
+Vamos aprender a mesclar o arquivo HTML com o arquivo JavaScript.
 
 Vamos criar o arquivo index.js e, por hora, vamos colocar um console.log nele para certificar que está tudo funcionando corretamente:
 
@@ -380,6 +380,143 @@ Por último, não utilize var, mas, sim, o let!!!!!! No caso, sempre que vc pens
     https://medium.com/@codingsam/awesome-javascript-no-more-var-working-title-999428999994
 
 ## Aula 08 - Constantes com const:
+Vamos, awgora, aprender a utilizar uma outra declaração de variável, o const.
+
+As suas funcionalidades e as boas práticas são muito similares aos do let. Então o que exatamente diferencia entre "let" e o "const"?
+
+Seria, pelo fato, de que uma constante, assim como o nome já disse, uma vez declarado algum valor nela, posteriormente, em nenhum passo vc não poderá modificar o valor dessa constante. A constante já precisa ser declarada e, logo em seguida, inicializada. Ou seja, vc não consegue declarar uma constante, que nem é feito em let, para depois atribuir algum valor nela.
+
+    const nome;
+
+Se vc rodar o arquivo com essa forma acontecerá o seguinte erro:
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula08-Constantes-com-const/index.js"
+    /home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula08-Constantes-com-const/index.js:4
+    const nome;
+        ^^^^
+
+    SyntaxError: Missing initializer in const declaration
+        at wrapSafe (internal/modules/cjs/loader.js:1001:16)
+        at Module._compile (internal/modules/cjs/loader.js:1049:27)
+        at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+        at Module.load (internal/modules/cjs/loader.js:950:32)
+        at Function.Module._load (internal/modules/cjs/loader.js:790:12)
+        at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)
+        at internal/main/run_main_module.js:17:47
+
+Outra coisa, como foi comentado acima, não podemos modificar o valor da constante.
+
+    // Não dá para mudar o valor da constante
+    const nome = 'João';
+    nome = 'Leonardo';
+
+Se rodarmos o arquivo index.js, com a forma como está acima, acontecerá o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula08-Constantes-com-const/index.js"
+    /home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula08-Constantes-com-const/index.js:9
+    nome = 'Leonardo';
+        ^
+
+    TypeError: Assignment to constant variable.
+        at Object.<anonymous> (/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula08-Constantes-com-const/index.js:9:6)
+        at Module._compile (internal/modules/cjs/loader.js:1085:14)
+        at Object.Module._extensions..js (internal/modules/cjs/loader.js:1114:10)
+        at Module.load (internal/modules/cjs/loader.js:950:32)
+        at Function.Module._load (internal/modules/cjs/loader.js:790:12)
+        at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:76:12)
+        at internal/main/run_main_module.js:17:47
+
+Um outro detalhe muito curioso, assim como vale para a variável let, é que podemos atribuir o valor de uma variável em outra variável
+
+    // Podemos atribuir o valor da const em outras variáveis.
+    // Operações aritméticos, as 4 principais: +, -, *, /
+    const primeiroNumero = 5;
+    const segundoNumero = 10;
+
+    const resultado = primeiroNumero * segundoNumero;
+    console.log(resultado);
+
+No caso, uma outra possibilidade viável, seria que, em vez de ficarmos sempre mudando o valor da variável, podemos ir criando novas e novas variável na medida em que seria necessário realizar uma nova atribuição de valor.
+
+    // Podemos atribuir o valor da const em outras variáveis.
+    // Operações aritméticos, as 4 principais: +, -, *, /
+    const primeiroNumero = 5;
+    const segundoNumero = 10;
+
+    const resultado = primeiroNumero * segundoNumero;
+    const resultadoDuplicado = resultado * 2;
+    console.log(resultado);
+    console.log(resultadoDuplicado);
+
+Podemos, agora vai ficar mais interessante, combinar as variáveis const e let, desde que fique claro quais são os valores que não podem ser alterados e outras podemos modificar ao longo do processo, caso vc não queira ficar toda hora definindo alguma variável nova, conforme novas atribuições de valores.
+
+    // Podemos atribuir o valor da const em outras variáveis.
+    // Operações aritméticos, as 4 principais: +, -, *, /
+    const primeiroNumero = 5;
+    const segundoNumero = 10;
+
+    const resultado = primeiroNumero * segundoNumero;
+    const resultadoDuplicado = resultado * 2;
+    let resultadoTriplicado = resultado * 3;
+    console.log(resultado);
+    console.log(resultadoDuplicado);
+    console.log(resultadoTriplicado);
+
+Caso vc queira fazer alguma mudança valor resultadoTriplicado, podemos fazer o seguinte
+
+    // Podemos atribuir o valor da const em outras variáveis.
+    // Operações aritméticos, as 4 principais: +, -, *, /
+    const primeiroNumero = 5;
+    const segundoNumero = 10;
+
+    const resultado = primeiroNumero * segundoNumero;
+    const resultadoDuplicado = resultado * 2;
+    let resultadoTriplicado = resultado * 3;
+    resultadoTriplicado = resultadoTriplicado + 5;
+    console.log(resultado);
+    console.log(resultadoDuplicado);
+    console.log(resultadoTriplicado);
+
+No caso, o uso do let, ao realizarmos uma nova atribuição de valor para a mesma variável, vc irá perder o último valor que foi atribuído para ela e isso não ficará guardado na memória. Diferentemente do const que o seu valor sempre ficará guardado, não importa o que foi feito posteriormente com o valor atribuído inicialmente. Ela nunca será perdida.
+
+Bom, no exemplo, até agora, foram usados números, mas que fique claro que isso serve para outros tipos tbm (string, booleano, objetos, etc...).
+
+Vão, com certeza, existir casos em que o valor atribuído ao const ficará oculto, ou seja, vc não terá a mínima ideia de qual tipo de dado estará sendo atribuído ao const, o mesmo vale para let. Isso porque a linguagem JavaScript, ela é uma linguagem de typagem dinâmica, ou seja, vc, dificilmente, irá trabalhar com dados estáticos, mas, sim, a maioria dinâmicas. Para isso, existe um recurso que te ajuda a verificar qual o tipo de dado que está sendo computado nela, o "typeof".
+
+    // Podemos atribuir o valor da const em outras variáveis.
+    // Operações aritméticos, as 4 principais: +, -, *, /
+    const primeiroNumero = 5;
+    const segundoNumero = 10;
+
+    const resultado = primeiroNumero * segundoNumero;
+    const resultadoDuplicado = resultado * 2;
+    let resultadoTriplicado = resultado * 3;
+    resultadoTriplicado = resultadoTriplicado + 5;
+    console.log(resultado);
+    console.log(resultadoDuplicado);
+    console.log(resultadoTriplicado);
+    console.log(typeof primeiroNumero);
+
+Podemos fazer uma combinação de uso de typeof, explorando mais um pouco
+
+    // Podemos atribuir o valor da const em outras variáveis.
+    // Operações aritméticos, as 4 principais: +, -, *, /
+    const primeiroNumero = '5';
+    const segundoNumero = 10;
+
+    const resultado = primeiroNumero * segundoNumero;
+    const resultadoDuplicado = resultado * 2;
+    let resultadoTriplicado = resultado * 3;
+    resultadoTriplicado = resultadoTriplicado + 5;
+    console.log(resultado);
+    console.log(resultadoDuplicado);
+    console.log(resultadoTriplicado);
+    console.log(typeof primeiroNumero);
+    console.log(typeof primeiroNumero + segundoNumero);
+    console.log(typeof(typeof primeiroNumero + segundoNumero));
+    console.log(typeof(primeiroNumero + segundoNumero));
+
+Antes de rodar o código acima, tenta advinhar, visto que vc entendeu a definição do typeof e as operações artiméticas com os tipos, o que será devolvido no terminal para cada tipo de console.log com a sua forma de uso do typeof.
 
 ## Aula 09 - Correção:
 
