@@ -519,10 +519,25 @@ Podemos fazer uma combinação de uso de typeof, explorando mais um pouco
 Antes de rodar o código acima, tenta advinhar, visto que vc entendeu a definição do typeof e as operações artiméticas com os tipos, o que será devolvido no terminal para cada tipo de console.log com a sua forma de uso do typeof.
 
 ## Aula 09 - Correção:
+No exercício a seguir, você verá uma constante chamada de "altura" e depois modificada para "alturaEmCm", mais precisamente no seguinte trecho de código:
+
+    const nome = 'Luiz Otávio';
+    const sobrenome = 'Miranda';
+    const idade = 30;
+    const peso = 84;
+    const alturaEmCm = 1.80; // <-- NESTE LOCAL
+
+Na verdade, este valor (1.80) está em metros, portando, o nome da variável deveria ser "alturaEmM".
+
+Só vi isso na edição da aula, peço desculpas pelo erro.
+
+O código corrigido estará disponível após a aula.
 
 ## Aula 10 - Exercícios - Const e Let:
+Seguir no index.js dessa aula, que lá estará a questão!
 
 ## Aula 11 - Código do exercício solucionado:
+Não ire copiar o código solucionado, pois o meu tbm está igualzinho a dele!
 
 ## Aula 12 - Let vs Var - Primeira diferença:
 
