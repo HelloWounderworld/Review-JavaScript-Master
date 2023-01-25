@@ -540,8 +540,115 @@ Seguir no index.js dessa aula, que lá estará a questão!
 Não ire copiar o código solucionado, pois o meu tbm está igualzinho a dele!
 
 ## Aula 12 - Let vs Var - Primeira diferença:
+Vamos discutir as principais diferenças entre Let e Var.
+
+Lembra que com o let, uma vez declarado uma variável, vc não pode mais declarar novamente? No caso, no var isso é possível como segue
+
+    var nome = 'Leonardo';
+    var nome = 'Takashi';
+    console.log(nome);
+
+Ao rodarmos o código acima, não ocorrerá nenhum tipo de erro e será retornado o último valor em que foi atribuído para o var nome. No caso, a segunda linha, onde vc declara novamente o var nome, vc está redeclarando ela e colocando algum valor ou nenhuma nela.
+
+No caso, o let, corrige esse detalhe de falha dessa palavra chave "var". Esse recurso foi introduido em ECMAScript 2015 (ES6). (ECMAScript e JavaScript são as mesmas coisas)
+
+Outra coisa que vc não deve fazer, ou seja, entra como uma má prática.
+
+    nome = 'Leonardo';
+
+    console.log(nome);
+
+Isso irá até funcionar, mas sem declarar qual tipo de variável, let, var ou const, isso será visto como um escopo global e poderá trazer sérios problemas ao longo do desenvolvimento.
 
 ## Aula 13 - Tipos de dados primitivos:
+Vamos aprender mais sobre os tipos de dados primitivos.
+
+Até agora, vimos string, number, undefined. 
+
+Mas, agora, vamos abordar de forma mais séria sobre tais dados.
+
+Strings:
+
+    const nome = 'Leonardo';
+    const nome1 = "Leonardo";
+    const nome2 = `Leonardo`; // No caso da crase, podemos usar as template strings, ${}, como foi visto nas aulas anteriores.
+
+Number:
+
+    const num1 = 10;
+    const num2 = 10.52;
+
+Undefined:
+
+    let nomeAluno; // undefined -> não aponta para local nenhuma na memória.
+
+Nulo, não é igual ao undefined. No caso, se usa quando queremos desconfigurar o valor de uma variável.
+
+Uma obsercação importante: Para o JavaScript, o null é considerado um objeto. Entretanto, o null não se enquadradia como objeto no seu uso prático.
+
+    let sobrenomeAluno = null; // Nulo -> não aponta pra local nenhuma na memória.
+    console.log(typeof sobrenomeAluno, sobrenomeAluno);
+
+Booleano - No caso, esses são muito usado em condicionais e prosicional. Porém, a maioria das vezes usamos por vias de alguma relação, e não de forma tão explícita como está aqui.
+
+Existem casos sim em que vc usa ela de forma explícita, como em casos de vc verificar alunos aprovados ou não.
+
+    const boolean = true; // ou false
+
+### Dados primitivos vs Dados passados por referência:
+Quais seriam as diferenças entre dados primitivos e dados passados por referência?
+
+No caso, vamos prestar atenção no seguinte processo
+
+    // Dados passados por referência
+    const a = [1, 2];
+    const b = a; // O sinal "=" é um operador de atribuição.
+    console.log(a, b);
+
+    b.push(3);
+    console.log(a, b);
+
+Ao rodarmos o primeiro console.log, irá aparecer o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula13-Tipos-de-dados-primitivos/index.js"
+    [ 1, 2 ] [ 1, 2 ]
+
+Agora, ao rodarmos o segundo console.log, depois de ter acrescentado um elemento dentro do objeto "b", teremos o seguinte comportamento
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula13-Tipos-de-dados-primitivos/index.js"
+    [ 1, 2, 3 ] [ 1, 2, 3 ]
+
+No caso, note que, o elemento "3" não foi acrescentado somente no objeto "b", mas tbm no "a". O que isso quer dizer? Significa que os dois valores, "a" e "b", criadas acima, ambas, estão apontando para a mesma referência/memória. E isso é típico comportamento de dados passados por referência.
+
+Diferentemente da seguinte
+
+    // Agora, presta atenção no seguinte
+    let a1 = 2;
+    let b1 = a1;
+    // Aqui acima, realmente foi feito uma cópia.
+
+Acima, de fato, foi feito uma cópia do primeiro valor, que é um dado primitivo. Ou seja, se eu alterar o valor de um, essa alteração não afetará a outra.
+
+    // Agora, presta atenção no seguinte
+    let a1 = 2;
+    let b1 = a1;
+    console.log(a1, b1);
+    // Aqui acima, realmente foi feito uma cópia.
+
+    a1 = 3;
+    console.log(a1, b1);
+
+Rodando o código acima, teremos o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula13-Tipos-de-dados-primitivos/index.js"
+    2 2
+    3 2
+
+Logo, levantando uma lista de todos os dados primitivos são
+
+    String Number Undefined Null Boolean Symbol
+
+Ainda não vimos symbol, pois é um conceito mais avançado e será visto pela frente.
 
 ## Aula 14 - Operadores aritméticos, de atribuição e incremento:
 
