@@ -1141,6 +1141,229 @@ Lembrando que o document.body.innerHTML sempre que usamos o símbolo "=", atribu
 Agora, para responder os exercícios, visto que estamos usando a crase, então iremos usar o string template para conseguirmos responder os exercícios.
 
 ## Aula 20 - Mais sobre numbers:
+Vamos aprender mais sobre numbers.
+
+Vimos, até agora, que com o número podemos realizar operações aritméticas. Dentro das operações aritméticas, uma delas que tem uma propriedade curiosa é "+".
+
+    let num1 = 1;
+    let num2 = 2.5;
+
+    console.log(num1 + num2);
+
+No caso, se quiermos então que tal soma acima se torne uma via de concatenação? Existe um recurso que possibilita isso que é o toString().
+
+    let num1 = 1;
+    let num2 = 2.5;
+
+    console.log(num1 + num2);
+
+    // toString()
+    console.log(num1.toString() + num2);
+
+Assim, rodando isso teremos o seguinte:
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula20-Mais-sobre-numbers/index.js"
+    3.5
+    12.5
+
+Daí, nada de surpresa, como já vimos antes, quando somamos uma string com um número, esse número vira uma string e, então, a soma se torna uma concatenação.
+
+Lembrando que esse método .toString() não transforma o num1 em uma string. Ele só aplica a conversão no instante em que é chamado. Como prova disso, se analisarmo o tipo do num1 teremos o seguinte
+
+    let num1 = 1;
+    let num2 = 2.5;
+
+    console.log(num1 + num2);
+
+    // toString()
+    console.log(num1.toString() + num2);
+    console.log(typeof num1);
+
+Rodando o código acima teremos
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula20-Mais-sobre-numbers/index.js"
+    3.5
+    12.5
+    number
+
+Note que, o num1 continua um número, pois o método .toString foi aplicado em um instante, apenas.
+
+Temos uma outra funcionalidade que temos para o toString, que seria transformar os números em binários, como segue
+
+    // Transformando um núemro em binário usando o toString
+    let num3 = 1500;
+
+    console.log(num3.toString(2));
+
+Se rodarmos esse código, teremos o seguinte retorno
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula20-Mais-sobre-numbers/index.js"
+    10111011100
+
+Agora, temos tbm um recurso de arredondamento para números tbm que é o toFixed
+
+    // toFixed arredondamento
+    let num4 = 10.545154841618915156;
+
+    console.log(num4.toFixed(2));
+    console.log(num4.toFixed(3));
+    console.log(num4.toFixed(4));
+
+Se rodarmos o código acima teremos
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula20-Mais-sobre-numbers/index.js"
+    10.55
+    10.545
+    10.5452
+
+Agora, tem momentos em que queremos saber se um número é ou não inteiro. Para isso, temos o seguinte
+
+    // Conferindo se um núemro é inteirou ou não
+    let num5 = 10;
+    let num6 = 2.5;
+
+    console.log(Number.isInteger(num5));
+    console.log(Number.isInteger(num6));
+
+Se rodarmos o código acima, será retornado um valor booleano
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula20-Mais-sobre-numbers/index.js"
+    true
+    false
+
+Agora, vamos aprender a conferir se um dado é ou não um número. Sabemos que, como um dos exemplos clássicos, se multiplicamos um número com uma string, será devolvido um NaN (Not a Number). Assim, como existem outros casos em que isso ocorre. Para isso, existe uma maneira de descobrirmos se tal dado é ou não um número. Para isso basta fazermos o seguinte
+
+    // Confeirndo se é NaN ou não
+    let num7 = 2;
+    let temp = num7 * 'Hello';
+
+    console.log(Number.isNaN(temp));
+    console.log(Number.isNaN(num7));
+
+Isso irá devolver o seguinte, em valores booleanos
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula20-Mais-sobre-numbers/index.js"
+    true
+    false
+
+As contas em JavaScript, quando é lidado com a imprecisão existe um padrão que lhe é seguido que é IEEE 754-2008
+
+    // IEEE 754-2008
+    // Padrão de imprecisão com números em JavaScript
+    let num8 = 0.7;
+    let num9 = 0.1;
+
+    console.log(num8 + num9);
+
+    num8 += num9;
+
+    console.log(num8);
+
+Ao rodarmos esse código acima teremos o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula20-Mais-sobre-numbers/index.js"
+    0.7999999999999999
+    0.7999999999999999
+
+Note que, ele tenta represetar uma dízima periódica.
+
+No caso, se quisermos somar ao 0.7 o 0.1 três vezes esperado que ela nos forneça um número 1.
+
+    // IEEE 754-2008
+    // Padrão de imprecisão com números em JavaScript
+    let num8 = 0.7;
+    let num9 = 0.1;
+
+    console.log(num8 + num9);
+
+    num8 += num9;
+
+    console.log(num8);
+
+    num8 += num9;
+    num8 += num9;
+
+    console.log(num8);
+
+O resultado do último console será
+
+    0.9999999999999999
+
+Mas, note que, há uma imprecisão aqui, que é o JavaScript tentando representar uma dízima periódica truncada e ela não devolveu o número 1 que esperávamos que seja devolvido perante a essa soma.
+
+Uma das formas de resolvermos isso seria usando o toFixed para arredondamento
+
+    num8 = num8.toFixed(2);
+
+    console.log(num8);
+
+E esse código irá devolver o seguinte
+
+    1.00
+
+Mas aí vem a pergunta. Resolvemos mesmo o problema?? Esse número ele se tornou mesmo um inteiro?? PAra verificarmos isso já sabemos como
+
+    num8 = num8.toFixed(2);
+
+    console.log(num8);
+    console.log(Number.isInteger(num8));
+
+Daí, será retornado o seguinte
+
+    false
+
+Ou seja, isso não resolveu o nosso problema. Uma observação importante é que acima deu a entender que analisamos se o número 1.00 é inteiro ou não, mas olha só o seguinte
+
+    console.log(Number.isInteger(1.00));
+
+Isso irá retornar um true, ou seja, o JavaSript reconhece o 1.00 como um núemro inteiro. Então, o que está acontecendo aqui??
+
+A resposta para isso está em como o método isIntteger está realizando a checagem do número inteiro. Ele usa o método binário. Isso significa que o num8, mesmo usado o toFixed(2), ele não vira um inteiro, pois o isInteger, na hora de usar o binário para conferir se é ou não um número inteiro ele não consegue por ver que existe números decimais depois disso.
+
+Então, para resolver, de fato, o problemma precisaria realizar o seguinte
+
+    let num10 = 0.7;
+
+    num10 += num9;
+    num10 += num9;
+    num10 += num9;
+
+    num10 = parseFloat(num10.toFixed(2));
+    // ou num10 = Number(num10.toFixed(2));
+
+    console.log(Number.isInteger(num10));
+
+Como prova disso, se rodarmos teremos o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula20-Mais-sobre-numbers/index.js"
+    1
+    true
+
+Para sabermos melhor sobre IEEE 754-2008 seguite o seguinte link
+
+    https://stackoverflow.com/questions/55280847/floating-point-number-in-javascript-ieee-754
+
+    https://stackoverflow.com/questions/42181795/is-ieee-754-2008-deterministic
+
+    https://2ality.com/2012/04/number-encoding.html
+
+Existe uma outra forma, só que mais trabalhosa, de resolver esse problema de se é ou não um número inteiro. No caso, bastaríamos converter os números fracionários em inteiros multiplicando na base 10 e depois voltarmos dividindo o mesmo pela base 10
+
+    // Outra forma de resolver
+    let num11 = 0.7;
+    let num12 = 0.1;
+
+    num11 = ((num11 * 100) + (num12 * 100)) / 100;
+    num11 = ((num11 * 100) + (num12 * 100)) / 100;
+    num11 = ((num11 * 100) + (num12 * 100)) / 100;
+
+    console.log(num11);
+    console.log(Number.isInteger(num11));
+
+Ao rodarmos o código teremos o seguinte
+
+    1
+    true
 
 ## Aula 21 - Objeto Math:
 
