@@ -1132,6 +1132,13 @@ Para mais detalhes em aprender sobre os métodos que temos para string recomenda
 
 
 ## Aula 19 - Exercícios com strings:
+Vamos usar o arquivo perguntas.html e nela realizar os exercícios.
+
+No caso, nesse arquivo perguntas.html, nela, consta a estrutura padrão do arquivo html e dentro do body temos o script, donde podemos definir a tag script e dentro dessa tag definimos uma constante. Além disso, queremos definir as ações que serão usadas e, em seguida, exibir tais ações. Para isso, estamos usando o document.body.innerHTML o que indica o que queremos exibir dentro do arquivo html, especificamente, dentro da tag body.
+
+Lembrando que o document.body.innerHTML sempre que usamos o símbolo "=", atribuição, ela irá substituir o conteúdo no lugar que possívelmente já estaria nela. Para evitarmos isso, vamos ter que usar "+=" que é de incremento com atribuição, de forma que concatenamos as novas informações junto com as outras já atribuídas.
+
+Agora, para responder os exercícios, visto que estamos usando a crase, então iremos usar o string template para conseguirmos responder os exercícios.
 
 ## Aula 20 - Mais sobre numbers:
 
