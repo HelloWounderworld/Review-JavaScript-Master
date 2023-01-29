@@ -1366,6 +1366,146 @@ Ao rodarmos o código teremos o seguinte
     true
 
 ## Aula 21 - Objeto Math:
+Vamos aprender a usar um pouco do objeto chamado Math, donde tem inúmeros recursos relacionados às ferramentas matemáticas.
+
+Então, vamos começando com seguinte no arquivo index.js do diretório dessa aula, o arredondamento
+
+    let num1 = 9.54578;
+    let num2 = Math.floor(num1);
+
+    console.log(num1);
+    console.log(num2);
+
+Rodando o código acima, vamos ter o seguinte resultado
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula21-Objecto-Math/index.js"
+    9.54578
+    9
+
+Note que, o método floor do objeto Math, ele arredondou o valor 9 para baixo, ou seja, truncou os números decimais.
+
+Agora, temos, tbm, uma forma de arredondar para cima, que é usando o método ceil que temos no objeto Math
+
+    // Arredondando para cima
+    let num3 = 9.54578;
+    let num4 = Math.ceil(num3);
+
+    console.log(num3);
+    console.log(num4);
+
+Rodando o código acima, teremos o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula21-Objecto-Math/index.js"
+    9.54578
+    10
+
+Note que, o arredondamento ocorreu para cima.
+
+Em ambos os métodos de arredondamento acima, foram ignorados os números decimais.
+
+Outra forma de arredondamento, seria usando o método round
+
+    // Round - Arredondamento
+    let num5 = 9.54578;
+    let num6 = Math.round(num5);
+
+    let num7 = 9.44578;
+    let num8 = Math.round(num7);
+
+    console.log(num5);
+    console.log(num6);
+
+    console.log(num7);
+    console.log(num8);
+
+Rodando o código acima, teremos o seguinte retorno pelo terminal
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula21-Objecto-Math/index.js"
+    9.54578
+    10
+    9.44578
+    9
+
+Ou seja, esse método ele arredonda conforme a regra básica de arredondamento que aprendemos no fundamental.
+
+Agora, temos o conceito de pegar o máximo que é muito comum se encontrar na matemática, quando vc quer obter um valor máximo de um conjunto de números finitos (se for infinito precisaria de uma propriedade topológica de compacidade)
+
+    // Pegando o máximo de um conjunto
+    console.log(Math.max(1,2,3,-10,8,2301));
+
+Daí, será retornado o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula21-Objecto-Math/index.js"
+    2301
+
+O mesmo vale para caso eu queira o menor número
+
+    // Pegando o mínimo de um conjunto
+    console.log(Math.min(1,2,3,-10,8,2301));
+
+Rodando o código acima teremos o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula21-Objecto-Math/index.js"
+    -10
+
+Como esperávamos, ele retornou o menor número desse conjunto.
+
+Outro método que esse objeto tem, é o método randômico, que seria retornar algum número aleatório dentro do intervalo [0,1]
+
+    // Random
+    console.log(Math.random());
+
+Quando rodamos o código acima, será retornado algo do tipo
+
+    0.21015798836250976
+
+No caso, não significa que sempre será o número de cima que será retornado por esse método. A cada vez que vc vai acionando esse método, será retornado tipos de números diferentes dentro do intervalo [0,1], de forma aleatório (pseudo-aleatório no caso).
+
+Temos também, o número PI definido nela
+
+    // Pi
+    console.log(Math.PI);
+
+Que é retornado o seguinte
+
+    3.141592653589793
+
+Temos também o método de potenciação, usando o .pow()
+
+    // Potenciação
+    console.log(Math.pow(2,10)); // 2^10
+    console.log(2 ** 10); // é a mesma coisa
+
+A expressão acima indica 2 elevaod à 10.
+
+Temos também o método que tira a raíz quadrada de um número, sqrt()
+
+    // Raíz quadrada
+    console.log(Math.sqrt(9));
+    console.log(Math.sqrt(5));
+    console.log(Math.sqrt(3));
+
+Rodando o código será retornado o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula21-Objecto-Math/index.js"
+    3
+    2.23606797749979
+    1.7320508075688772
+
+Agora, temos um recurso em JavaScript que, em outras linguagens de programação, no geral, daria errado, mas aqui ela devolve um valor, que é quando uma conta dá um infinito
+
+    // Inifinito
+    console.log(100/0);
+
+Isso será retornado no terminal o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula21-Objecto-Math/index.js"
+    Infinity
+
+O legal é que podemos gerar o infinito de forma mais manual tbm colocando um número muito, mas muito, grande
+
+    console.log(100/0);
+    console.log(100/0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001);
 
 ## Aula 22 - Exercícios com numbers e Math:
 
