@@ -1508,6 +1508,59 @@ O legal é que podemos gerar o infinito de forma mais manual tbm colocando um n�
     console.log(100/0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001);
 
 ## Aula 22 - Exercícios com numbers e Math:
+Vamos praticar os métodos que apresentamos na aula passada.
+
+Para isso, vamos criar dois arquivos index.html e script.js, donde criamos um diretórioooo js dentro do diretório dessa aula, dentro dela colocamos esse arquivo.
+
+No arquivo index.html colocamos o seguinte
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercícios</title>
+    </head>
+    <body>
+        <section>
+            <h1>O número colocado é <span id="numero-titulo"></span></h1>
+            <div id="texto"></div>
+        </section>
+
+        <script src="js/script.js">
+            
+        </script>
+    </body>
+    </html>
+
+Daí, no script.js colocamos o seguinte
+
+    const numero = prompt('Digite um número:');
+    const numeroTitulo = document.getElementById('numero-titulo');
+    const texto = document.getElementById('texto');
+
+O legal do document.getElementById ele consegue selecionar o id da tag onde está presente. Para vc conseguir ver qual tag que o document.getElementById ele pegou, bastaria vc entrar no console da página e digitar o nome do const que vc definiu que assim ele irá retornar a tag html em que o document.getElementById ele está considerando.
+
+    numeroTitulo
+    <span id=​"numero-titulo">​</span>​
+
+Como podemos ver aqui.
+
+Agora, no arquivo script.js, visto que estamos conseguindo selecionar as tags da html, vamos ter que definir as questões usando o document.body.innerHTML, mas, desta vez, direcionado para as tags que tem o id e que consideramos pelo document.getElementById
+
+    const numero = Number(prompt('Digite um número:'));
+    const numeroTitulo = document.getElementById('numero-titulo');
+    const texto = document.getElementById('texto');
+
+    numeroTitulo.innerHTML = numero;
+    texto.innerHTML = `<p>Raiz quadrada: ${Math.sqrt(numero)}</p><br/>`;
+    texto.innerHTML += `<p>${numero} é inteiro: ${Number.isInteger(numero)}</p><br/>`;
+    texto.innerHTML += `<p>É NaN: ${Number.isNaN(numero)}</p><br/>`;
+    texto.innerHTML += `<p>Arredondado para baixo: ${Math.floor(numero)}</p><br/>`;
+    texto.innerHTML += `<p>Arredondado para cima: ${Math.ceil(numero)}</p><br/>`;
+    texto.innerHTML += `<p>Com duas casas decimais: ${Number(numero.toFixed(2))}</p><br/>`;
+
 
 ## Aula 23 - Arrays (Básico):
 
