@@ -2066,6 +2066,215 @@ Agora, ao pedir para exibir a idade da pessoa, será exibido 27
     pessoal.fala();
     console.log(pessoal.idade);
 
-## Aula 27 - Valores primitivos e valores por referência: 
+## Aula 27 - Valores primitivos e valores por referência:
+Vamos entender mais sobre os valores primitivos e por referência e deixar claro a diferença entre eles tbm.
+
+Até agora, vimos de valores primitivos aqueles como string, number, boolean, undefined e null. Mas temos tbm, como valores primitivos o bigint e symbol.
+
+Quando queremos falar de valores primitivos, estamos querendo dizer dos valores imutáveis, no sentido de que o valor em si não podemos modificar. Por exemplo, um booleano não é possível ser uma string. Assim como uma string não é possível ser um booleano.
+
+    /*
+    Primitivos - string, number, boolean, undefined, null (bigint, symbol)
+    */
+    let nome = 'Leonardo';
+    nome = 'Takashi';
+    console.log(nome);
+
+Note que, nesse caso aqui, dá a entender que estamos mudando o valor, mas precisamos se atentar que não estamos mudando o seu valor primitivo, que é uma string.
+
+Mas, agora, note que, quando estamos trabalhando com uma string, conseguimos fazer um tratamento similar com que fazemos no array. No caso, isso significa que conseguimos observar o seguinte comportamento curioso
+
+    /*
+    Primitivos - string, number, boolean, undefined, null (bigint, symbol)
+    */
+    let nome = 'Leonardo';
+    nome = 'Takashi';
+    console.log(nome);
+
+    nome[0] = 'R';
+    console.log(nome[0], nome);
+
+Ao rodarmos o código acima, pela lógica, havíamos atribuído uma letra R no primeiro índice da string Takashi, o que se espera é que essa nova atribuição, no lugar do T, seja exibido um R. Mas se rodarmos o código acima, vamos ver que não é o que estará acontecendo, como se espera no tratamento de um array. Será retornado ainda a letra T. Ou seja, isso reforça mais ainda a definição do que é um valor primitivo, que ela é imutável. No caso, mesmo conseguindo, em grande parte, fazer um tratamento parecido com uma lista, as strings, vamos ver que, se quisermos alterar os caracteres que compõe uma string, isso não será possível.
+
+Vimos, nas aulas anteriores tbm, que quando definimos um valor primitivo em uma variável e logo em seguida definimos uma outra variável e nela atribuímos o valor da variável que foi deinido primeiro, para valores primitivos, estaríamos realizando uma cópia da mesma
+
+    let a = 'A';
+    let b = a;
+    console.log(a, b);
+
+Ou seja, se fazemos uma cópia, então significa que se alterarmos o valor da segunda variável, b, vamos ver que no console.log será exibido dois valores diferentes.
+
+    // Característica de valor primitivo, cópia
+    let a = 'A';
+    let b = a;
+    b = 'B';
+    console.log(a, b);
+
+Da mesma forma que se eu alterar o valor da variável "a"
+
+    // Característica de valor primitivo, cópia
+    let a = 'A';
+    let b = a;
+    a = 'Outra coisa';
+    // b = 'B';
+    console.log(a, b);
+
+Vamos ver que no terminal será devolvido um outro valor para a variável "a", equanto que o "b", continua com o valor inicial que foi atribuído pelo "a".
+
+Agora, vemos ver os valores por referência. No caso, os valores por referência eles são mutáveis.
+
+    /*
+    Referência (mutável) - Arrays, Objetos, Function
+    */
+    let a1 = [1, 2, 3];
+    let b1 = a1;
+
+    console.log(a1, b1);
+
+Nesse caso aqui, diferentemente de um valor primitivo, não ocorrerá uma cópia. Ou seja, o que significa que tanto a variável "a1" quanto o "b1" estão apontando para a mesma memória. O que isso significa?
+
+Significa que se vc alterar algum valor dentro do array tanto do "b1" quando do "a1", como os dois estão apontando para a mesma memória, então a alteração que afeta na memória será perpetuado para as duas variáveis tbm
+
+    /*
+    Referência (mutável) - Arrays, Objetos, Function
+    */
+    let a1 = [1, 2, 3];
+    let b1 = a1;
+    b1[0] = 5;
+    console.log(a1, b1);
+
+Ou seja, a alteração que ocorreu no "b1" acima, vai ocorrer no "a1" também.
+
+    /*
+    Referência (mutável) - Arrays, Objetos, Function
+    */
+    let a1 = [1, 2, 3];
+    let b1 = a1;
+    b1[0] = 5;
+    console.log(a1, b1);
+
+    a1.push(4);
+    console.log(a1, b1);
+
+Ou seja, mesmo depois dando um push no a1, vamos ver que até no b1 isso estará sendo acrescentado
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula27-Valore-primitivos-e-valores-por-referencia/index.js"
+    [ 5, 2, 3 ] [ 5, 2, 3 ]
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula27-Valore-primitivos-e-valores-por-referencia/index.js"
+    [ 5, 2, 3 ] [ 5, 2, 3 ]
+    [ 5, 2, 3, 4 ] [ 5, 2, 3, 4 ]
+
+E a ação se perpetua e vice-versa
+
+    /*
+    Referência (mutável) - Arrays, Objetos, Function
+    */
+    let a1 = [1, 2, 3];
+    let b1 = a1;
+    b1[0] = 5;
+    console.log(a1, b1);
+
+    a1.push(4);
+    console.log(a1, b1);
+
+    b1.pop();
+    console.log(a1, b1);
+
+Isso nos retornará o seguinte
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula27-Valore-primitivos-e-valores-por-referencia/index.js"
+    [ 5, 2, 3 ] [ 5, 2, 3 ]
+    [ 5, 2, 3, 4 ] [ 5, 2, 3, 4 ]
+    [ 5, 2, 3 ] [ 5, 2, 3 ]
+
+
+Mesmo criando uma nova variável depois, ela terá o mesmo valor, ou seja, estará apontando para a mesma memória
+
+    /*
+    Referência (mutável) - Arrays, Objetos, Function
+    */
+    let a1 = [1, 2, 3];
+    let b1 = a1;
+    let c1 = b1;
+    b1[0] = 5;
+    console.log(a1, b1);
+
+    a1.push(4);
+    console.log(a1, b1);
+
+    b1.pop();
+    console.log(a1, b1);
+
+    console.log(c1);
+
+Como podemos ver
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula27-Valore-primitivos-e-valores-por-referencia/index.js"
+    [ 5, 2, 3 ] [ 5, 2, 3 ]
+    [ 5, 2, 3, 4 ] [ 5, 2, 3, 4 ]
+    [ 5, 2, 3 ] [ 5, 2, 3 ]
+    [ 5, 2, 3 ]
+
+Por isso, se, de fato, quisermos copiar um valor de array para o outro, vamos precisar realizar o seguinte
+
+    // Copiando um valor de referência - array
+    let a2 = [1, 2, 3];
+    let b2 = [...a2];
+    let c2 = a2;
+    b2[0] = 5;
+    console.log(a2, b2);
+
+    a2.push(4);
+    console.log(a2, b2);
+
+    b2.pop();
+    console.log(a2, b2);
+
+    a2.push('Leonardo');
+    console.log(a2, b2, c2);
+
+Assim, vamos ver que, de fato, ocorreu a cópia
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula27-Valore-primitivos-e-valores-por-referencia/index.js"
+    [ 1, 2, 3 ] [ 5, 2, 3 ]
+    [ 1, 2, 3, 4 ] [ 5, 2, 3 ]
+    [ 1, 2, 3, 4 ] [ 5, 2 ]
+    [ 1, 2, 3, 4, 'Leonardo' ] [ 5, 2 ] [ 1, 2, 3, 4, 'Leonardo' ]
+
+Vamos realizar a mesma análise para os objetos
+
+    // Object
+    const pessoa = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu'
+    }
+    const pessoa2 = pessoa;
+
+    pessoa.nome = 'Luiz';
+    console.log(pessoa2);
+
+Pois, é a mesma lógica, ambos apontam para o mesmo local da memória
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula27-Valore-primitivos-e-valores-por-referencia/index.js"
+    { nome: 'Luiz', sobrenome: 'Teramatsu' }
+
+Para realizar, de fato, uma cópia, vamos realizar o mesmo que fizemos para o array, usando o spread
+
+    // Copiando
+    let people = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu'
+    };
+    let people2 = {...people};
+
+    people.nome;
+    console.log(people2);
+
+Assim, rodando o código acima, no terminal é devolvido
+
+    leonardo@leonardo-Dell-G15-5520:~/Documentos/estudos/Review-JavaScript-Master$ node "/home/leonardo/Documentos/estudos/Review-JavaScript-Master/JavaScript-Curso-Udemy/secao02-JavaScript-Basico-Para-Iniciantes/Aula27-Valore-primitivos-e-valores-por-referencia/index.js"
+    { nome: 'Leonardo', sobrenome: 'Teramatsu' }
+
+De fato, ocorreu a cópia.
 
 ## Aula 28 - Exercício para função, array e objetos:
