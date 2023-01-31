@@ -1752,6 +1752,187 @@ Isso NÃO pode
     array = 'Legal'; // Assignment to constant variable.
 
 ## Aula 25 - Funções (Básico):
+As funções executam ações, isso no ponto de vista computacional.
+
+No ponto de vista matemático, uma função é uma relação entre conjuntos não vazios, X e Y, tais que f: X -> Y e para todos os pontos x pertencente em X, existe um único ponto y em Y tal que f(x)=y.
+
+Obs: Tenta ver como essa definição se encaixa em funções, function() {}, sem parâmetro para ser dado à ela. Quem seria o seu domínio, dom(f)=X e quem seria o contra-domínio Y??
+
+No caso, em computação para definirmos uma função, ele sempre começará com a palavra function.
+
+    function saudacao() {
+        console.log('Bom dia!');
+    }
+
+    // Executando uma função.
+    saudacao()
+
+Agora, podemos também definir uma parâmetro em uma função
+
+    function saudacao(nome) {
+        console.log(`Bom dia ${nome}`);
+    }
+
+    // Executando uma função.
+    saudacao('Leonardo')
+
+Além disso, essa função ela é reutilizável, no sentido de que, uma vez definida essa função, vc consegue aplicar o mesmo em qualquer outro lugar desde que a aplicação esteja de acordo com a forma como a função foi definida.
+
+Podemos, também, salvar uma execução de uma função em uma variável
+
+    function saudacao(nome) {
+        console.log(`Bom dia ${nome}`);
+    }
+
+    // Executando uma função.
+    saudacao('Leonardo');
+
+    const variavel = saudacao('Takashi');
+    console.log(variavel);
+
+Entretanto, como a função saudacao não está retornando nada, então a variável, variavel, definida pelo const, retornará um undefined. Mas, mesmo assim, a função ela foi executada, basta olhar o que foi retornado pelo terminal.
+
+Caso vc queira qua a função retorne alguma coisa, bastaria usar o return dentro da função, saudacao, e o que vc ira retornar poderia ser qualquer coisa
+
+    function saudacao(nome) {
+        console.log(`Bom dia ${nome}`);
+        return 123456;
+    }
+
+    // Executando uma função.
+    saudacao('Leonardo');
+
+    const variavel = saudacao('Takashi');
+    console.log(variavel);
+
+Ao executar novamente o código acima, agora, vamos ver que a variável, variavel, ela irá retornar um valor, o 123456.
+
+No caso, podemos fazer com que o retorno seja o seguinte
+
+    function saudacao(nome) {
+        // console.log(`Bom dia ${nome}`);
+        return `Bom dia ${nome}`;
+    }
+
+    // Executando uma função.
+    saudacao('Leonardo');
+
+    const variavel = saudacao('Takashi');
+    console.log(variavel);
+
+Ou seja, retornando a palavra de saudacao.
+
+Vamos criar uma outra função que tenha mais funcionalidade
+
+    function soma(x, y) {
+        const resultado = x + y;
+        return resultado;
+    }
+
+    console.log(soma(2, 2));
+    console.log(soma(6, 1));
+    console.log(soma(0, 2));
+
+Note que, o que fica dentro do corpo da função está protegido, pois não podemos acessar, por exemplo, a variável resultado que está dentro da função soma. Ou seja, o que fica definido dentro de uma função, o escopo para esses conteúdos será somente o escopo da função. Por exemplo, conseguimos ver isso  no VueJS, um framework para fron-end, quando estudamos sobre as arrow functions, quando definidos como método e definido dentro de um método. A lógica aqui não muda, ou seja, para o conteúdo definido dentro da função, o universo dele é a função, e não fora dele.
+
+    function soma(x, y) {
+        const resultado = x + y;
+        return resultado;
+    }
+
+    console.log(soma(2, 2));
+    console.log(soma(6, 1));
+    console.log(soma(0, 2));
+    console.log(resultado);
+
+Lembra que para o const, uma vez atribuído um dado primitivo, jamais vc poderá alterar o dado primitivo dele? Agora, visto que os conteúdos que ficam dentro de uma função o escopo dele é a função, teria problema se eu declarar o mesmo nome da variável usando const fora dele?
+
+    function soma(x, y) {
+        const resultado = x + y;
+        return resultado;
+    }
+
+    console.log(soma(2, 2));
+    console.log(soma(6, 1));
+    console.log(soma(0, 2));
+    // console.log(resultado);
+    const resultado = soma(3, 3);
+    console.log(resultado);
+
+A resposta é não, pois se a variável, resultado, que foi definido fora da função soma, como foi feito acima, dar algum erro dizendo que não podemos reatribuir um novo valor, significa que essa variável está enxergando a variável dentro do escopo da função soma, algo que vai contra a definição de escopo para função.
+
+Lembrando que, qualquer coisa que vier depois do return, dentro do escopo da função, não será executado.
+
+    function soma(x, y) {
+        const resultado = x + y;
+        return resultado;
+        console.log('Hello WounderWorld');
+    }
+
+Ou seja, o console log que tem a msg, "Hello WounderWorld", não será executado.
+
+Agora, na função soma, se executarmos essa função sem enviar um parâmetro??
+
+    const semParametro = soma();
+    console.log(semParametro);
+
+A resposta para essa execução seria um "NaN", pois quando executamos o que definimos dentro da soma, os dois parâmetros que é exibido são undefined.
+
+O mesmo vale para caso definirmos algum parâmetro somente para uma das duas, aparecerá um NaN, pois estaria realizando uma conta com um número e um undefined.
+
+Como aprendemos nas aulas anteriores, que a propriedade da soma, ele serve para concatenar tbm. Logo, nos parâmetros da função soma, podemos passar strings tbm que funcionará na mesma lógica que aprendemos sobre operador "+" das aulas passadas.
+
+Existem formas para deixarmos pré-definido um valor para os parâmetros que estamos exigindo na função. Ou seja, no ponto de vista matemático, isso serve como se vc estivesse definindo para caso tenha que definir algo para outros elementos. Ou seja, mais formalmente, o que eu estou fazendo seria que definir a função soma como a seguinte forma, se o parâmetro x e y, forem qualquer coisa diferente de undefined, então execute a operação, se x ou y forem undefined, então a operação será executada com x = 1 ou y = 1
+
+    function soma(x = 1, y = 1) {
+    const resultado = x + y;
+        return resultado;
+        // console.log('Hello WounderWorld');
+    }
+
+    console.log(soma(2, 2));
+    console.log(soma(6, 1));
+    console.log(soma(0, 2));
+    // console.log(resultado);
+    const resultado = soma(3, 3);
+    console.log(resultado);
+
+    const semParametro = soma();
+    console.log(semParametro);
+
+Ou seja, o formato da função soma que foi definido acima, temos um valor padrão que foi definido para x e y, para caso não for passado alguma variável.
+
+Podemos definir uma função dentro de uma variável de forma anônima.
+
+    // Nesse caso, precisa do ponto e vírgula
+    const raiz = function (n) {
+        return Math.sqrt(n);
+    };
+
+    console.log(raiz(9));
+    console.log(raiz(16));
+    console.log(raiz(25));
+
+A mesma coisa podemos realizar para um tipo de função, chamado arrow function.
+
+    // Usando arrow function
+    const root = (n) => {
+        return Math.sqrt(n);
+    };
+
+    console.log(root(9));
+    console.log(root(16));
+    console.log(root(25));
+
+No caso, o arrow function ele facilita bastante a vida dos programadores. A expressão acima, poderia ficar muito mais enxuta
+
+    const root2 = n => Math.sqrt(n);
+
+    console.log(root2(9));
+    console.log(root2(16));
+    console.log(root2(25));
+
+No caso, o que diferencia entre uma arrow function e uma função normal, se manifesta quando usamos a variável "this", como foi visto na aula de VueJS, a mesma lógica que vimos lá se aplica para cá. Ou seja, o this para o arrow function ele estaria olhando para o escopo global, que é a tela inteira, window, já dentro de uma função normal, ela estaria olhando dentro do escopo da função.
 
 ## Aula 26 - Objetos (Básico):
 
