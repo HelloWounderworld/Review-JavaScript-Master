@@ -1563,6 +1563,159 @@ Agora, no arquivo script.js, visto que estamos conseguindo selecionar as tags da
 
 
 ## Aula 23 - Arrays (Básico):
+Vamos aprender os coneitos básicos de Arrays (Matriz).
+
+Obs: Tenta pegar todos os meus códigos pythons voltado para matriz, tente criar toda a teoria de álgebra linear que aprendi usando Arrays!!
+
+Vamos começar aqui. No caso, o array é uma lista, ou melhor, daria para interpretar como um matriz que ao mesmo tempo daria para manipular como uma lista de documentos e dados para serem guardadas.
+
+Basicamente, vc consegue colocar o que quiser dentro de uma lista
+
+    const alunos = ['Leonardo', 'Luiz', 'João', 1, true, {Estado: 'SP'}, function() { return 'Hello WounderWorld'}, null, undefined];
+
+    console.log(alunos);
+
+No caso, uma boa prática de arrays, por ela ter essa característica de poder colocar quaisquer informações, seria sempre tentar manter as informações de forma conscisa.
+
+Da mesma forma que as strings, nos estudos anteriores, cada caractere que compõe uma string é indexado, os arrays, também, são para os seus respectivos elementos (Ficaria mais fácil pensar na definição de uma sequência matemática).
+
+    const alunos = ['Leonardo', 'Luiz', 'João', 1, true, {Estado: 'SP'}, function() { return 'Hello WounderWorld'}, null, undefined];
+
+    console.log(alunos);
+    console.log(alunos[0]);
+    console.log(alunos[2]);
+    console.log(alunos[6]());
+
+Uma forma de editar os dados de um array, é o mesmo quando vc edita os dados da variavel let. No caso, se vc quiser editar bastaria fazer o seguinte
+
+    const alunos = ['Leonardo', 'Luiz', 'João', 1, true, {Estado: 'SP'}, function() { return 'Hello WounderWorld'}, null, undefined];
+
+    console.log(alunos);
+    console.log(alunos[0]);
+    console.log(alunos[2]);
+    console.log(alunos[6]());
+
+    alunos[2] = 'Newton';
+
+    console.log(alunos);
+    console.log(alunos[2]);
+
+Note que, temos uma coisa bem curiosa acontecendo aqui. Quando declaramos a variável alunos usando o const, aprendemos no passado que um valor atribuído para o const ele não pode ser alterado. Mas, se prestarmos mais a atenção para qual tipo de dado essa regra do const se aplicava? Para dados primários! No caso, o array, como podemos ver, ele não é um dado primário, mas, sim, um dado direcionado. O que permite que, o dado array em si que é um objeto, não pode ser trocado para algum outro dado, mas os elementos que compõe esse dado array, permite alterações.
+
+Se, por exemplo, o índice não existir, então ela será criado, como seguinte
+
+    // Inserindo elemento em um índice que não existe
+    const indiceNovo = ['Leonardo', 'Marcos', 'João'];
+
+    console.log(indiceNovo);
+
+    indiceNovo[5] = 'Luiz';
+
+    console.log(indiceNovo);
+
+Podemos, também, saber o tamanho do array
+
+    // Dá o tamanho do array
+    console.log(alunos.length);
+
+Da mesma, forma, podemos colocar um novo elemento no último da lista
+
+    // Inserindo elemento no último da lista
+    alunos[alunos.length] = 'Eduardo';
+    alunos[alunos.length] = 'Max';
+    alunos[alunos.length] = 'Einstein';
+    console.log(alunos);
+
+    alunos.push('Lucas');
+    console.log(alunos);
+
+Vale ressaltar aqui, que a indexação de array, assim como na string, ela obedece o conjunto dos naturais de n comprimento, sendo que n = {0, 1, 2, ..., n-2, n-1}.
+
+Agora, se queremos adicionar um novo elemento no primeiro lugar da lista, bastaria usar o unshift
+
+    // Adicionando no primeiro lugar na lista
+    alunos.unshift('Primeiro lugar');
+
+    console.log(alunos);
+
+Agora, podemos também, excluir o elemento da lista pelo último, usando o pop
+
+    // Excluindo o elemento pelo último
+    alunos.pop();
+
+    console.log(alunos);
+
+O legal tbm é que esse método ele permite ser guardado em uma variável o que foi removido
+
+    // Excluindo o elemento pelo último
+    const removido = alunos.pop();
+
+    console.log(removido);
+    console.log(alunos);
+
+Da mesma, forma que temos o método que remove do final, temos, tbm, método que remove do iníco que é o shift
+
+    // Remove do início
+    const removeInicio = alunos.shift();
+
+    console.log(removeInicio);
+    console.log(alunos);
+
+E, claro, temos também uma forma de apagar um dado elemento de uma lista especificando o índice dela
+
+    // Apagando um elemento pelo índice
+    console.log(alunos[5]);
+    delete alunos[5];
+
+    console.log(alunos);
+
+No caso, no indice em que antes existia o elemento, agora ela ficará vazio, se vc verificar o que será retornado pelo terminal.
+
+Claro, se pedirmos para exibir um índice de uma lista que não está definido, o JavaScript retornará undefined
+
+    // Pedindo para exibir um índice inexistente
+    console.log(alunos[1000]);
+
+Podemos entender que é uma função injetora de vai dessa lista, alunos, o conjuntos dos naturais e que no contradomínio, o valor 1000 não existe um elemento da lista que corresponda.
+
+Podemos, também, fatiar a lista usando o método slice
+
+    // Fateando a lista
+    console.log(alunos.slice(0,7));
+
+No caso, note que, quando colocamos o intervalo, o segundo indice será considerado o antecessor dela o intervalo de fateamento.
+
+Da mesma forma que, se vc quiser fatiar até o último elemento da lista, teríamos que colocar o comprimento inteiro da lista como o segundo parâmetro
+
+    // Fatiando a lista
+    console.log(alunos.slice(0,7));
+    console.log(alunos.slice(0,alunos.length));
+
+Podemos, também, usar o número negativo. No caso, a contagem do intervalo, em vez de ser de 0 pela frente, será do último para o início
+
+    // Fatiando a lista
+    console.log(alunos.slice(0,7));
+    console.log(alunos.slice(0,alunos.length));
+    console.log(alunos.slice(0,-1));
+    console.log(alunos.slice(0,-2));
+
+Lembre-se, um array é um objeto, mesmo ele tendo a funcionalidade de lista. No caso, temos dois tipos de objetos o array e o objeto que é representado por duas chaves, {}. Em ambos os casos, se vc conferir o tipo, ele retornará um objeto.
+
+    // Tipo
+    console.log(typeof alunos);
+    console.log(typeof {});
+
+No caso, como, então, vamos conseguir distinguir entre objeto e um array?? Podemos usar o instanceof
+
+    // Tipo
+    console.log(typeof alunos);
+    console.log(typeof {});
+
+    console.log(alunos instanceof Array);
+    console.log({} instanceof Array);
+
+    console.log(alunos instanceof Object);
+    console.log({} instanceof Object);
 
 ## Aula 24 - Const com valores mutáveis:
 
