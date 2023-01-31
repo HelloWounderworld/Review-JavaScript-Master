@@ -1935,6 +1935,136 @@ No caso, o arrow function ele facilita bastante a vida dos programadores. A expr
 No caso, o que diferencia entre uma arrow function e uma função normal, se manifesta quando usamos a variável "this", como foi visto na aula de VueJS, a mesma lógica que vimos lá se aplica para cá. Ou seja, o this para o arrow function ele estaria olhando para o escopo global, que é a tela inteira, window, já dentro de uma função normal, ela estaria olhando dentro do escopo da função.
 
 ## Aula 26 - Objetos (Básico):
+Vamos aprender o básico de objetos.
+
+Como foi visto no uso de objetos, o array, nas aulas anteriores, vimos que quando usamos o const e atribuímos um objeto array, conseguimos alterar os elementos na qual compõe esses arrays, mas se quisermos reatribuir para a variável, donde foi definido o objeto array, não será possível.
+
+    const array = [1, 2, 3];
+
+    array.push(4);
+    array[0] = 'Leonardo';
+    console.log(array);
+
+Existem casos em que precisamos salvar as informações de forma padronizada. Para esse caso, em vez de array, poderíamos usar o objeto {}
+
+    // Objeto
+    const pessoa1 = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26
+    };
+
+    console.log(pessoa1.nome);
+    console.log(pessoa1.sobrenome);
+    console.log(pessoa1.idade);
+
+Note que, o objeto acima, podemos padronizar a sua criação usando uma função
+
+    // Padronizando a criacao de um objeto via função
+    function criaPessoa(nome, sobrenome, idade) {
+        return {
+            nome: nome,
+            sobrenome: sobrenome,
+            idade: idade
+        }
+    }
+
+    const pessoa2 = criaPessoa('Leonardo', 'Teramatsu', 26);
+    console.log(pessoa2.nome);
+
+Temos um formato mais enxuto de criar a tal função acima
+
+    function criaPessoa2(nome, sobrenome, idade) {
+        return {
+            nome,
+            sobrenome,
+            idade
+        }
+    }
+
+    const pessoa3 = criaPessoa2('Leonardo', 'Teramatsu', 26);
+    console.log(pessoa3.nome);
+
+No caso, o JavaScript já entende que a forma como se cria o objeto acima, o elemento dela será o próprio parâmetro definido e o conteúdo dentro do parâmetro que ele carrega.
+
+Podemos criar uma função dentro do objeto
+
+    // Definindo funções dentro do objeto - método
+    const pessoal = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        fala() {
+            console.log('Hello WounderWorld');
+        }
+    }
+
+    pessoal.fala();
+
+Como não obstante, dentro do objeto, pessoal, a função definida, fala, acima dentro dela podemos chamar os elementos que definimos dentro do objeto usando o "this"
+
+    // Definindo funções dentro do objeto - método
+    const pessoal = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        fala() {
+            console.log('Hello WounderWorld');
+            console.log(`${this.nome}`);
+            console.log(`${this.sobrenome}`);
+            console.log(this.idade);
+        }
+    }
+
+    pessoal.fala();
+
+No caso, o "this", nesse caso ele está fazendo referência ao objeto pessoal e, assim, acessando usualmente os elementos dentro dela que está contido.
+
+Podemos, definir um método tbm, dentro desse objeto, que modifica os valores do próprio elemento que nela foi definida
+
+    // Definindo funções dentro do objeto - método
+    const pessoal = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        fala() {
+            console.log('Hello WounderWorld');
+            console.log(`${this.nome}`);
+            console.log(`${this.sobrenome}`);
+            console.log(this.idade);
+        },
+        incrementaIdade() {
+            ++this.idade;
+            console.log(this.idade);
+        }
+    }
+
+    pessoal.fala();
+    pessoal.incrementaIdade();
+
+Agora, ao pedir para exibir a idade da pessoa, será exibido 27
+
+    // Definindo funções dentro do objeto - método
+    const pessoal = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        fala() {
+            console.log('Hello WounderWorld');
+            console.log(`${this.nome}`);
+            console.log(`${this.sobrenome}`);
+            console.log(this.idade);
+        },
+        incrementaIdade() {
+            ++this.idade;
+        }
+    }
+
+    pessoal.fala();
+    console.log(pessoal.idade);
+    pessoal.incrementaIdade();
+    pessoal.fala();
+    console.log(pessoal.idade);
 
 ## Aula 27 - Valores primitivos e valores por referência: 
 
