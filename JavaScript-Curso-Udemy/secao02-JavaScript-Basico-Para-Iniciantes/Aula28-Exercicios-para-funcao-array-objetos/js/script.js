@@ -5,6 +5,7 @@ function meuEscopo() {
     const resultado = document.querySelector('.resultado');
 
     const pessoas = [];
+    resultado.innerHTML = '';
     // form.onsubmit = function(evento) {
     //     evento.preventDefault(); // Vai evitar que a página atualize sempre que clicar no botão Enviar
     //     // Como prova disso, vc verá que o console.log abaixo não ficará somente um milésimo de segundos.
@@ -29,13 +30,10 @@ function meuEscopo() {
             peso: peso.value,
             altura: altura.value
         };
-        pessoas.push(pessoa);
+        // pessoas.push(pessoa);
         console.log(pessoas);
-        console.log(resultado);
-        resultado.innerHTML = '';
-        for(let i = 0; i < pessoas.length; i++) {
-            resultado.innerHTML += `<p>${pessoas[i].nome} ${pessoas[i].sobrenome} ${pessoas[i].peso} ${pessoas[i].altura}</p>`;
-        }
+        // console.log(resultado);
+        resultado.innerHTML += `<p>${pessoa.nome} ${pessoa.sobrenome} ${pessoa.peso} ${pessoa.altura}</p>`;
     }
     form.addEventListener('submit', recebeEventoForm);
 }
