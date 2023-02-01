@@ -2278,3 +2278,67 @@ Assim, rodando o código acima, no terminal é devolvido
 De fato, ocorreu a cópia.
 
 ## Aula 28 - Exercício para função, array e objetos:
+Vamos fazer exerícios sobre função, array e objetos.
+
+Rever essa aula e fazer as devidas anotações.
+
+Criamos um index.html e um diretório js, donde dentro do diretório js criamos o arquivo script.js, e assim em index.html colocamos o seguinte
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercícios</title>
+    </head>
+    <body>
+        <form class="form" action="" method="get">
+            <p>Nome: <input type="text" class="nome"></p>
+            <p>Sobrenome: <input type="text" class="sobrenome"></p>
+            <p>Peso: <input type="text" class="peso"></p>
+            <p>Altura: <input type="text" class="altura"></p>
+            <button>Enviar</button>
+        </form>
+
+        <div class="resultado"></div>
+        <script src="js/script.js">
+
+        </script>
+    </body>
+    </html>
+
+Agora, em script.js, coloquemos o seguinte
+
+    function meuEscopo() {
+        // alert(1);
+        // const form = document.querySelector('form'); // Uma alternativa de selecionar pela tag
+        const form = document.querySelector('.form'); // Selecionando pela classe.
+        const resultado = document.querySelector('.resultado');
+
+        const pessoas = [];
+        // form.onsubmit = function(evento) {
+        //     evento.preventDefault(); // Vai evitar que a página atualize sempre que clicar no botão Enviar
+        //     // Como prova disso, vc verá que o console.log abaixo não ficará somente um milésimo de segundos.
+        //     // alert(1);
+        //     console.log('Foi eviado.'); // Note que esse console.log vai ser exibido em milésimo de segundos
+        // };
+
+        // let contador = 1;
+        function recebeEventoForm(evento) {
+            evento.preventDefault();
+            // console.log(`Form não foi enviado ${contador}`);
+            // contador++;
+            const nome = form.querySelector('.nome');
+            const sobrenome = form.querySelector('.sobrenome');
+            const peso = form.querySelector('.peso');
+            const altura = form.querySelector('.altura');
+            // console.log(nome.value, sobrenome.value, peso.value, altura.value);
+
+            console.log(pessoas);
+        }
+        form.addEventListener('submit', recebeEventoForm);
+    }
+    meuEscopo();
+
+No caso, o que vamos precisar fazer aqui em diante, como exercício seria criar um objeto onde guarda as informações que são colocados no input e, em seguida, exibir tais informações no index.html na div com class resultado.
