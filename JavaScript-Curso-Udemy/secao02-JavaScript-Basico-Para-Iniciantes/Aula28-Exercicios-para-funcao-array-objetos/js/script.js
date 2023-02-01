@@ -33,6 +33,7 @@ function meuEscopo() {
         // pessoas.push(pessoa);
         console.log(pessoas);
         // console.log(resultado);
+        // resultado.innerHTML += `<p>${nome.value} ${sobrenome.value} ${peso.value} ${altura.value}</p>`; // Modo alternativo
         resultado.innerHTML += `<p>${pessoa.nome} ${pessoa.sobrenome} ${pessoa.peso} ${pessoa.altura}</p>`;
     }
     form.addEventListener('submit', recebeEventoForm);
