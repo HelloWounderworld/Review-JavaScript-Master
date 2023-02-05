@@ -154,14 +154,141 @@ Ou seja, basicamente, o operador OR, visto que a leitura computacional é de esq
     console.log( 0 || "" || null);
 
 ## Aula 06 - if, else if e else (1):
+Vamos revisar, agora, os operadores if, else if e else.
+
+Bom, podemos entender que o if, else if e else, no ponto de vista matemático, de possibilidades que temos, não, exatamente, no sentido probabilístico, mas do que conseguimos contar. Do ponto de vista de lógica proposicional, seria a união de conjuntos que perte contar tais possibilidades.
+
+No caso, os operadores if, else if e else, eles avaliam se uma dada condição é ou não verdadeira para possibilitar que algo seja executado.
+
+Do ponto de vista matemático, podemos entender isso como uma implicação. Ou seja, o pensamento matemático daria para se resumir no entendimento da causa e consequência, em outras palavras, se uma dada hipótese estiver satisfeita, então resulta em uma certa tese
+
+    Hipótese => Tese
+    (=>) - Implica
+
+Mas, vamos tomar um pouco de cuidado com essa analogia, pois ela tem uma lixeira diferença entre a computação.
+
+Enquanto que na matemática a implicação, ou seja, se algo satisfazer, então (implica) na tese, ela tem todo um argumento consistente que faz com que necessariamente conseguimos concluir um resultado visto que certas condições são satisfeitas, em computação essa implicação ela é pode ser definida de forma manual, independente se faz ou não sentido.
+
+Um exemplo, seria o seguinte raciocínio:
+
+- Raciocínio matemático:
+
+    Dado um número inteiro n. Logo:
+    Se n divisível por 2 => n é par
+
+- Computação:
+
+    Dado uma variável palavra. Logo:
+    palavra === 'Maçã' => tenho uma 'Laranja'
+
+Note que, enquanto que no raciocínio matemático, não importa qual seja o número inteiro, se ele for divisível por 2, então necessariamente ele é par, e não podemos dizer que ele é qualquer outra coisa, pois tem um sentido que satisfeito a condição necessariamente conseguimos concluir isso em teoria? Sendo que em computação, visto que uma condição seja satisfeita, o que será resultado dela temos a flexibilidade de definir o que quisermos, visto que acima resultou em 'Laranja', mas o que 'Laranja' tem haver com a 'Maçã'? Não tem nenhum relação.
+
+Entretanto, é importante ressaltar que esse raciocínio matemático de hipótese => Tese, é importante caso quisermos construir um código bem mais robusto para resolver problemas bem complexos, pois além de condicionais if, else if e else que vamos estudar aqui na aula existem conceitos de classes que vai nos ajudar a construir todo um código donde podemos configurar tais raciocínios, mesmo que o código em si, ele não diga o motivo por baixo da teoria do por quê que se isso acontecer faz sentido resultar em algo.
+
+Vamos praticar via um exemplo
+
+    const hora = 50;
+
+    if(0 < hora && hora <= 12) {
+        console.log('Bom dia!');
+    } else if (12 < hora && hora <=17) {
+        console.log('Boa tarde!');
+    } else if (17 < hora && hora <= 23) {
+        console.log('Boa noite!');
+    } else {
+        console.log('Olá!');
+    }
+
+Sempre que formos usar o else if ou else, precisamos da presença do if.
+
+Visto que o if está presente, podemos usar quantos else if quisermos.
+
+Só podemos usar somente um else.
+
+Podemos utilizar tbm somente if e else, visto que as possibilidades se dividem em apenas dois caminhos.
+
+Alguns macetes de avaliar as condições
+
+    const tenhoGrana = true;
+
+    if(tenhoGrana) {
+        console.log('Vou sair de casa');
+    } else {
+        console.log('Não vou sair de casa');
+    }
+
+Podemos usar a mesma lógica que aprendemos quando estavamos estudando os operadores lógicos && e ||. Ou seja, no lugar de conferir uma condição true, acima, podemos colocar outros dados, que por baixo dos panos eles são true ou false, do que havíamos aprendido na aula 05.
 
 ## Aula 07 - if, else if e else (2):
+Vamos continuar falando dos operadores condicionais.
+
+Vejamos a seguinte lógica
+
+    const numero = 10;
+
+    if (numero >= 0 && numero <=5) {
+        console.log('Sim, o número é maior ou igual a zero.');
+        console.log('Seu núemro está entre 0 e 5.');
+    } else {
+        console.log('O número NÃO está entre 0 e 5.');
+    }
+
+Note que, a condição acima estamos usando o else. Mas, agora, se fizermos o seguinte
+
+    const numero = 5;
+
+    if (numero >= 0 && numero <=5) {
+        console.log('Sim, o número é maior ou igual a zero.');
+        console.log('Seu núemro está entre 0 e 5.');
+    }
+        
+    console.log('O número NÃO está entre 0 e 5.');
+
+O que vc acha que será devolvido?
+
+Será devolvido tanto os dois consoles que estão dentro do if, visto que estão satisfeitos as condições, quanto o console.log que está fora do if. Ou seja, percebe que mesmo satisfeito a condição o JavaScript vai continuar lendo as linhas de código posteriores? 
+
+Existem situações em que isso acaba sendo problemático, pois queremos que a execução pare, visto que ela satisfez uma dada condição, sem que execute outras ações posteriores, mesmo que estejam definidas.
+
+Para isso, vamos ter que usar o return, pois ela irá fazer parar a execução exatamente naquela linhaem que vc pediu para ter esse retorno.
+
+    const numero = 5;
+
+    if (numero >= 0 && numero <=5) {
+        console.log('Sim, o número é maior ou igual a zero.');
+        console.log('Seu núemro está entre 0 e 5.');
+        return;
+    }
+        
+    console.log('O número NÃO está entre 0 e 5.');
+
+Ou, se queremos que não somente mostre os valores visto que satifeitas as condições, queremos que o código continua rodando realizando a leitura das linhas à frente, então, em vez de usarmos o return, podemos definir o else e tudo estará funcionando corretamente.
+
+    if (numero >= 0 && numero <=5) {
+        console.log('Sim, o número é maior ou igual a zero.');
+        console.log('Seu núemro está entre 0 e 5.');
+    } else {
+        console.log('O número NÃO está entre 0 e 5.');
+    }
+
+Obs: A leitura das condicionais são feitas de cima para baixo. No caso, em cenários em que tivemos bastante else if, por conta da leitura de cima para baixo, será executado o contéudo da primeira condicional que for satisfeita nesse processo. Logo, não importa se tiver outras condicionais adiante que seja verdadeira, que bastando encontrar a primeira condicional verdadeira ela será executada e todas as condicionais adiantes não serão mais. 
+
+Por isso, como uma forma de boa prática, seria legal exercer bastante a sua capacidade de lógica proposicional, pois tais problemas seriam resolvidos, muitas vezes, sabendo criar algumas condicionais mais robustas para evitar tais problemas que pode, como consequência, trazer outros problemas. Ou, até mesmo, uma outra forma de resolver esse tipo de problema é saber separar o conjunto if, else if e else com um outro conjunto if, else if e else. Ou seja, em vez de tentar colocar todas as condicionais dentro de um único conjunto if, else if e else, criar dois ou três, ou até mais, conjuntos para evitar que esse problema aconteça.
 
 ## Aula 08 - Modelo HTML e CSS para exercícios posteriores:
+Dixei baixado o modelo.zip que será o modelo para essa seção de exercícios.
 
 ## Aula 09 - Nota sobre o próximo exercício:
+A próxima aula será um exercício onde vamos aplicar todo o conhecimento aprendido até aqui, porém, pode ser um tanto intimidador para iniciantes unir todo o conhecimento em uma única aula.
+
+Se você se sentir preso(a) em algum momento ao realizar o exercício, minha sugestão é que você siga digitando comigo enquanto crio a minha solução.
+
+Ainda temos muitas aulas para fixar muito mais todo o seu conhecimento.
 
 ## Aula 10 - Exercício (unindo tudo aprendido até aqui e mais):
+Bora começar fazendo o exercício!
+
+Considere esse exercício como um EP, como é dado nas faculdades que ensinam algum curso de programação.
 
 ## Aula 11 - Operação ternária:
 
