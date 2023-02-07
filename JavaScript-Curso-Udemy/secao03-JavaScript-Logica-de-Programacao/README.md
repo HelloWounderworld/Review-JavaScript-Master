@@ -349,6 +349,179 @@ Temos, tbm, outras alternativas que nos dão o mesmo resultado ou resultados dif
 Bom, isso é o fallback.
 
 ## Aula 12 - Objeto Date:
+Vamos revisar sobre Objeto Date.
+
+A função date é uma função construtora. Sempre que vc usa alguma função construtora, a sintaxe utilizada é o "new", como vemos ver para a função date aqui
+
+    const data = new Date();
+
+E lembrando que sempre que utilizamos alguma função construtora, todas elas começam com uma letra maíscula em seu nome.
+
+    const data = new Date();
+    console.log(data.toString());
+
+Aqui estou utilizando os métodos que essa função construtora tem.
+
+A função construtora, Date, ela tem uma imensa quantidade de métodos, donde abordar todas elas custaria um curso inteiro. Logo, deixarei o link onde tem todas as funcionalidades dessa função construtora
+
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+Nessa aula, vamos abordar somente aquelas que são mais usuais no dia a dia de um dev.
+
+Bom, no código em que usamos o método ".toString()", nela está sendo mostrado a data atual em inglês. Mas aí vem a pergunta. Ela faz referência de qual data início? A partir de qual início de data ela faz a contagem para exibir as datas atuais?
+
+A resposta é a data inicial, na qual ela faz referência, é na criação do sistema operacional Linux, 01/01/1970
+
+    // const data = new Date();
+    const data = new Date(0); // 01/01/1970 Timestamp unix ou época unix
+    console.log(data.toString());
+
+Claro, ao rodarmos o código acima, será exibido
+
+    Wed Dec 31 1969 21:00:00 GMT-0300 (Hora padrão de Brasília)
+
+Visto que moramos em BR. Mas, note que, o horário da contagem está em GMT-0300, ou seja, ela subtrai 3h da data de inicío, que é a característica do tempo GMT.
+
+No caso, se vc quiser corrigir isso, dentro do Date(0) terá que ser somado essa quantidade de horas. E Lembrando que dentro dela o tempo que é considerado é milisegundos. Então, se vc quiser somar 3 horas dentro desse Date(0) será necessário converter esse 3 horas em millisegundos para depois somar
+
+    // const data = new Date();
+    const tresHoras = 60 * 60 * 3 * 1000;
+    const data = new Date(0 + tresHoras); // 01/01/1970 Timestamp unix ou época unix
+    console.log(data.toString());
+
+Feito isso, será exibido a seguinte informação no terminal
+
+    Thu Jan 01 1970 00:00:00 GMT-0300 (Hora padrão de Brasília)
+
+O mesmo vale caso vc quiser que seja exibida a informação de 24 horas após
+
+    // const data = new Date();
+    const tresHoras = 60 * 60 * 3 * 1000;
+    const umDia = 60 * 60 * 24 * 1000;
+    const data = new Date(0 + tresHoras + umDia); // 01/01/1970 Timestamp unix ou época unix
+    console.log(data.toString());
+
+Donde será exibido a seguinte informação
+
+    Fri Jan 02 1970 00:00:00 GMT-0300 (Hora padrão de Brasília)
+
+Um outro modo de conseguirmos exibirmos a data é colocando literalmente o seginte
+
+    new Date(Ano, mês, Dia, Hora, Minutos, segundo, milésimo de segundos)
+
+Donde, no mês, vc não coloca um 0 à esquerda, como 03, 01, etc... Além disso, o mês ele é contado a partir do zero, ou seja, 0, 1, 2, ...., 10, 11 é, respectivamente, Janeiro, Fevereiro, Março, ..., Novembro, Dezembro
+
+    const data = new Date(2023, 1, 7, 15, 46, 50, 5000);
+    console.log(data.toString());
+
+Isso exibirá a informação pelo terminal
+
+    Tue Feb 07 2023 15:46:55 GMT-0300 (Hora padrão de Brasília)
+
+Lembrando que a contagem de milésimo de segundos é de mil a mil. Ou seja
+
+    1 Segundos <=> 1000 milisegundos
+
+Logo, se vc colocar algo do tipo
+
+    const data = new Date(2023, 1, 7, 15, 46, 50, 1000);
+    console.log(data.toString());
+
+Em vez de ser exibido um segundo de 50, ele será acrescentado para 51 segundos na informação que será exibida.
+
+De maneira análoga serve para outras casas de tempo. Se vc colocar 60 segundos, na casa de segundos, automaticamente será contado como 1 minuto, da mesma forma para minuto para hora e de hora para dia e dia para ano. Ou até mesmo, nessa relação de equivalência, se vc colocar na casa de segundos um número que equivale à anos, será convertido diretamente para o ano.
+
+Agora, se omitirmos os milisegundos, segundos, minutos, hora e dia, esses valores serão estabelecidos, por padrão, como horário 0
+
+    // const data = new Date(2023, 1, 7, 15, 46, 50, 5000);
+    // const data = new Date(2023, 1, 7, 15, 46, 50);
+    // const data = new Date(2023, 1, 7, 15, 46);
+    // const data = new Date(2023, 1, 7, 15);
+    // const data = new Date(2023, 1, 7);
+    const data = new Date(2023, 1);
+    console.log(data.toString());
+
+Só nã vou poder omitir o mês, pois se emitirmos o mês, o valor que está dentro passará a ser considerado como milisegundos. No caso, precisa-se, no mínimo, de dois parâmetros.
+
+Uma outra forma usual que podemos mandar um dado dentro da função construtora, Date, é a data em forma de string
+
+    const data = new Date('2023-02-07');
+    console.log(data.toString());
+
+Podemos colocar até o horário tbm junto com a data
+
+    const data = new Date('2023-02-07 15:57:40');
+    console.log(data.toString());
+
+Mas, em ambos os casos será exibido a data em formato GMT.
+
+Podemos tbm passar até milissegundos e tbm o formato T, esta última não mudará nada
+
+    const data = new Date('2023-02-07T15:57:40.500');
+    console.log(data.toString());
+
+Para obtermos o número do dia, vamos usar o getDate
+
+    const data = new Date('2023-02-07T15:57:40.500');
+    console.log(data.toString());
+    console.log('Dia', data.getDate());
+
+No caso, será retornado dia 7 no terminal acima. O mesmo valerá para mês, ano, hora, minutos, segundos e milissegundos
+
+    const data = new Date('2023-02-07T15:57:40.500');
+    console.log(data.toString());
+    console.log('Dia', data.getDate());
+    console.log('Mês', data.getMonth() + 1);
+    console.log('Ano', data.getFullYear());
+    console.log('Hora', data.getHours());
+    console.log('Minuto', data.getMinutes());
+    console.log('Segundo', data.getSeconds());
+    console.log('Milissegundo', data.getMilliseconds());
+    console.log('Dia da semana', data.getDay());
+
+Um detalhe importante aqui tbm é que o dia da semana é contado da seguinte forma
+
+    0 - Domingo
+    1 - Segunda
+    2 - Terça
+    3 - Quarta
+    4 - Quinta
+    5 - Sexta
+    6 - Sábado
+
+Bom, vimos que a função Date, por ser construtora ela usa o new para conseguirmos realizar as aplicações. Mas existem casos em que podemos usar o Date sem usar o new
+
+    console.log(Date.now());
+
+Isso mostrará a data de agora em milissegundos
+
+    console.log(Date.now());
+    console.log(new Date(Date.now()));
+
+Como podemos ver pelo segundo console.
+
+No caso, visto as usabilidades da função Date, podemos realizar algumas personalizações acima disso
+
+    function zeroAEsquerda (num) {
+        return num >= 10 ? num : `0${num}`;
+    }
+
+    function formataData(data) {
+        const dia = zeroAEsquerda(data.getDate());
+        const mes = zeroAEsquerda(data.getMonth() + 1);
+        const ano = zeroAEsquerda(data.getFullYear());
+        const hora = zeroAEsquerda(data.getHours());
+        const min = zeroAEsquerda(data.getMinutes());
+        const seg = zeroAEsquerda(data.getSeconds());
+
+        return `${dia}/${mes}/${ano} ${hora}:${min}:${seg}`
+    }
+
+    const data = new Date();
+    const dataBrasil = formataData(data);
+    console.log(dataBrasil);
+
+No caso, o código acima, nos permite exibir o horário de agora em formato brasileiro.
 
 ## Aula 13 - Switch/Case:
 
