@@ -45,6 +45,7 @@ function getImc (peso, altura) {
 }
 
 function criaP () {
+  // createElement - Cria uma tag
   const p = document.createElement('p');
   return p;
 }
@@ -56,11 +57,13 @@ function setResultado (msg, isValid) {
   const p = criaP();
 
   if (isValid) {
+    // Esse classList, ele adiciona uma classe em uma tag.
     p.classList.add('paragrafo-resultado');
   } else {
     p.classList.add('bad');
   }
 
   p.innerHTML = msg;
+  // Add uma string ou string junto com tag como sua sub camada de div
   resultado.appendChild(p);
 }

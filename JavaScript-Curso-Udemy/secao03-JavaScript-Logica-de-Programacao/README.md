@@ -290,6 +290,12 @@ Bora começar fazendo o exercício!
 
 Considere esse exercício como um EP, como é dado nas faculdades que ensinam algum curso de programação.
 
+Basicamente, o objetivo desse exercício é criar o mesmo template dinâmico do diretorio, solucao-do-prof, mas fazendo da sua forma de maneira mais eficiente e possível.
+
+Nesse exercício, queremos que vc use as functions, operadores condicionais, operadores lógicos, recursos que temos para números, listas, etc... Ou seja, tudo o que vimos até agora.
+
+Libere contudo a sua criatividade nesse exercício!
+
 ## Aula 11 - Operação ternária:
 
 ## Aula 12 - Objeto Date:

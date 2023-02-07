@@ -56,3 +56,17 @@ form button {
 form button:hover {
   background: var(--primary-color-darker);
 }
+
+.text-success {
+  background-color: rgb(109, 255, 182);
+  padding: 10px 20px;
+}
+
+.text-warning {
+  background-color: #f14668;
+  padding: 10px 20px;
+}
+
+table {
+  width: 100%;
+}
