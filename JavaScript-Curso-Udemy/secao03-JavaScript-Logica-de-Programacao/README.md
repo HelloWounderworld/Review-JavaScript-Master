@@ -297,6 +297,56 @@ Nesse exercício, queremos que vc use as functions, operadores condicionais, ope
 Libere contudo a sua criatividade nesse exercício!
 
 ## Aula 11 - Operação ternária:
+Vamos, agora, revisar sobre operadores ternários.
+
+Baicamente, a operação ternária é um if e else de forma bem resumida, visto que tal condição nos fornece somente dois tipos de possibilidades.
+
+Basicamente a estrutura que temos para operação ternário seria o seguinte
+
+    condicao ? true : false
+
+Ou seja, em "condicao" vc coloca alguma condição para verificar e, em seguida, no será retornado o valor que vc definir no true, caso ele for verdadeiro, ou será retornardo um valor que vc definir, caso for falso.
+
+Um exemplo de sua aplicação seria o seguinte
+
+    const pontuacaoUsuario = 300;
+    const nivelUsuario = pontuacaoUsuario >= 200 ? 'Usuário Aprovado' : 'Usuário Reprovado';
+    console.log(nivelUsuario);
+
+No caso, a operação ternária, seria bom quando vc usa em momentos em que, de fato, as possibilidades são somente duas e que vc queira economizar espaço para código.
+
+Tem um outro macete bem legal que é o fallback, onde vc seta um valor padrão para a variável, como seguinte
+
+    const pontuacaoUsuario = 300;
+    const nivelUsuario = pontuacaoUsuario >= 200 ? 'Usuário Aprovado' : 'Usuário Reprovado';
+
+    const corUsuario = null;
+    const corPadrao = corUsuario || 'Preta';
+    console.log(nivelUsuario, corPadrao);
+
+Basicamente, o fallback está sendo aplicado na variável corPadrao. No caso, o que está sendo dito seria "Se o corUsuario for null, então define como cor padrão 'Preta'".
+
+Tenta mudar, agora, a variável corUsuario colocando algum valor válido dentro dele, 'Pink', por exemplo.
+
+Temos, tbm, outras alternativas que nos dão o mesmo resultado ou resultados diferentes
+
+    const pontuacaoUsuario = 300;
+    const nivelUsuario = pontuacaoUsuario >= 200 ? 'Usuário Aprovado' : 'Usuário Reprovado';
+
+    // const corUsuario = ''; // Considera como false
+    // const corUsuario = ""; // O mesmo
+    // const corUsuario = ``; // O mesmo
+    // const corUsuario = 0; // O mesmo
+    // const corUsuario = undefined; // O mesmo
+    // const corUsuario = false; // O mesmo
+    // const corUsuario = 'Pink';
+    // const corUsuario = 1;
+    // const corUsuario = true;
+    const corUsuario = null;
+    const corPadrao = corUsuario || 'Preta';
+    console.log(nivelUsuario, corPadrao);
+
+Bom, isso é o fallback.
 
 ## Aula 12 - Objeto Date:
 
