@@ -524,6 +524,163 @@ No caso, visto as usabilidades da função Date, podemos realizar algumas person
 No caso, o código acima, nos permite exibir o horário de agora em formato brasileiro.
 
 ## Aula 13 - Switch/Case:
+Vamos falar sobre a estrutura condicional Switch/Case.
+
+Vamos começar o seguinte
+
+    const data = new Date();
+    const diaSemana = data.getDay();
+    let diaSemanaTexto;
+
+    if (diaSemana === 0) {
+        diaSemanaTexto = 'Domingo';
+    } else if (diaSemana === 1) {
+        diaSemanaTexto = 'Segunda';
+    } else if (diaSemana === 2) {
+        diaSemanaTexto = 'Terça';
+    } else if (diaSemana === 3) {
+        diaSemanaTexto = 'Quarta';
+    } else if (diaSemana === 4) {
+        diaSemanaTexto = 'Quinta';
+    } else if (diaSemana === 5) {
+        diaSemanaTexto = 'Sexta';
+    } else if (diaSemana === 6) {
+        diaSemanaTexto = 'Sábado';
+    } else {
+        diaSemanaTexto = '';
+    }
+
+    console.log(diaSemana, diaSemanaTexto);
+
+O código acima, ele confere qual dia da semana é pelo número padronizado da função Date e perante à esse número ele retorna o dia da semana correspondente. Nesse tipo de situação, vimos que usamos o if e else if para podermos codificar isso. Claro, a lógica não está errada e a forma como foi feita acima ela funciona.
+
+Entretanto, seria menos trabalhoso, nesses casos, usarmos o Switch/Case. Ou seja, o Switch/Case ele é um conjunto de condicionais que ajuda a tornar menos custoso as linhas para codar.
+
+Logo, com o uso do Switch ficaria da seguinte forma
+
+    switch (diaSemana) {
+        case 0:
+            diaSemanaTexto = 'Domingo';
+            break;
+
+        case 1: 
+            diaSemanaTexto = 'Segunda';
+            break;
+
+        case 2:
+            diaSemanaTexto = 'Terça';
+            break;
+
+        case 3:
+            diaSemanaTexto = 'Quarta';
+            break;
+
+        case 4: 
+            diaSemanaTexto = 'Quinta';
+            break;
+        
+        case 5:
+            diaSemanaTexto = 'Sexta';
+            break;
+
+        case 6:
+            diaSemanaTexto = 'Sábado';
+            break;
+    }
+
+    console.log(diaSemana, diaSemanaTexto);
+
+Basicamente, a sintaxe do switch/case é o seguinte
+
+    switch(A variável que vc quer checar) {
+        case Se a variável for esse valor:
+            Execute o comando desse bloco;
+            break; Sai fora depois disso.
+    }
+
+O break nesse switch é necessário, pois se vc não usar o break, ele continuará avaliando outras possibilidades. Ou seja, esses cases que aparecem, em vez de ser como if, else if e else, eles são um conjunto de if's. Donde, se vc não dar um break para sair, assim como vc escreve if, if, if ... Para cada linha e será lido, será feito para o case tbm. Temos tbm uma espécie de else, para o switch/case, que é o default
+
+    switch (diaSemana) {
+        case 0:
+            diaSemanaTexto = 'Domingo';
+            break;
+
+        case 1: 
+            diaSemanaTexto = 'Segunda';
+            break;
+
+        case 2:
+            diaSemanaTexto = 'Terça';
+            break;
+
+        case 3:
+            diaSemanaTexto = 'Quarta';
+            break;
+
+        case 4: 
+            diaSemanaTexto = 'Quinta';
+            break;
+        
+        case 5:
+            diaSemanaTexto = 'Sexta';
+            break;
+
+        case 6:
+            diaSemanaTexto = 'Sábado';
+            break;
+
+        default:
+            diaSemanaTexto = '';
+            break; // break no default é opcional.
+    }
+
+Ou seja, funciona da seguinte forma, se nenhuma das condições acima não for válido, então faça isso.
+
+Lembrando que a palavra chave, break, não é uma palavra chave apenas do switch. Ou seja, ela é independente, donde pode ser usado em outras estruturas de repetições.
+
+Podemos colocar o switch dentro de uma função e nesses casos não será necessário usar o break
+
+    function getDayOfWeek (dayOfWeek) {
+        let diaSemanaTexto;
+        switch (dayOfWeek) {
+            case 0:
+                diaSemanaTexto = 'Domingo';
+                return diaSemanaTexto;
+        
+            case 1: 
+                diaSemanaTexto = 'Segunda';
+                return diaSemanaTexto;
+        
+            case 2:
+                diaSemanaTexto = 'Terça';
+                return diaSemanaTexto;
+        
+            case 3:
+                diaSemanaTexto = 'Quarta';
+                return diaSemanaTexto;
+        
+            case 4: 
+                diaSemanaTexto = 'Quinta';
+                return diaSemanaTexto;
+            
+            case 5:
+                diaSemanaTexto = 'Sexta';
+                return diaSemanaTexto;
+        
+            case 6:
+                diaSemanaTexto = 'Sábado';
+                return diaSemanaTexto;
+        
+            default:
+                diaSemanaTexto = '';
+                return diaSemanaTexto; // break no default é opcional.
+        }
+    }
+
+    // console.log(diaSemana, diaSemanaTexto);
+    console.log(diaSemana, getDayOfWeek(diaSemana));
+
+Note que, nesse código acima, no lugar do break, está sendo usado o return, pois como está dentro do escopo da função, não tem risco de usar o return e acabar não executando mais os códigos posteriores. Além disso, a variável, diaSemanaTexto, lembrando de como funciona o escopo, fora da função, é considerada inexistente, o que não corre o risco de definirmos o mesmo nome de variável fora da função.
 
 ## Aula 14 - Exercício com switch e date:
 
