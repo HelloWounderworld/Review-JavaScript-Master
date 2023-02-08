@@ -683,6 +683,13 @@ Podemos colocar o switch dentro de uma função e nesses casos não será necess
 Note que, nesse código acima, no lugar do break, está sendo usado o return, pois como está dentro do escopo da função, não tem risco de usar o return e acabar não executando mais os códigos posteriores. Além disso, a variável, diaSemanaTexto, lembrando de como funciona o escopo, fora da função, é considerada inexistente, o que não corre o risco de definirmos o mesmo nome de variável fora da função.
 
 ## Aula 14 - Exercício com switch e date:
+Vamos exercer sobre o conceito de switch e date que aprendemos.
+
+Para isso, vamos precisar de um index.html e o diretório assets. Dentro do diretório assets vamos ter três diretório, uma de css, img e js. No diretório css vamos criar um arquivo style.css e no js, main.js.
+
+O layout desses arquivos podem ser o mesmo do que usamos na aula10, donde fizemos o exercício geral de tudo.
+
+No caso, o objetivo é criar um template que mostra a data do momento.
 
 ## Aula 15 - Mais diferenças entre var e let/const:
 
