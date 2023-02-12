@@ -692,6 +692,9 @@ O layout desses arquivos podem ser o mesmo do que usamos na aula10, donde fizemo
 No caso, o objetivo é criar um template que mostra a data do momento.
 
 ## Aula 15 - Mais diferenças entre var e let/const:
+Vamos entender mais sobre as diferenças entre let e const.
+
+
 
 ## Aula 16 - Atribuição via desestruturação (Arrays):
 
