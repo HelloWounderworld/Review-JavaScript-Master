@@ -692,9 +692,228 @@ O layout desses arquivos podem ser o mesmo do que usamos na aula10, donde fizemo
 No caso, o objetivo é criar um template que mostra a data do momento.
 
 ## Aula 15 - Mais diferenças entre var e let/const:
-Vamos entender mais sobre as diferenças entre let e const.
+Vamos entender mais sobre as diferenças entre var e let/const.
 
+A primeira diferença que a gente viu seria sobre a não possibilidade de redeclarar uma variável já declarada, que temos no let
 
+    let nome = 'Leonardo';
+    var nome2 = 'Leonardo';
+
+    // let nome
+    // var nome2
+
+Agora, uma outra diferença seria o seguinte
+
+    const verdadeira = true;
+
+    let nome = 'Leonardo';
+    var nome2 = 'Leonardo';
+
+    // let nome
+    // var nome2
+
+    if (verdadeira) {
+        let nome = 'Teramatsu';
+        console.log(nome, nome2);
+    }
+
+Lembra que para let não poderíamos redeclarar o mesmo nome de uma variável já declarada? Bom, o que o cenário acima está indicando?
+
+A resposta disso é está no fato de como funciona o escopo do let. Ou seja, o let ele tem um escopo de bloco. Em outras palavras, tudo que estiver dentro de chaves "{}", em JavaScript, ele é considerado um bloco. Já o var, o escopo dele é de função.
+
+No caso, a ideia do let ter um escopo de bloco, ele serve tbm para um bloco aninhado tbm, no caso um bloco dentro de um outro bloco.
+
+    const verdadeira = true;
+
+    // let tem escopo de bloco { ... bloco }
+    // var só tem escopo de função
+
+    let nome = 'Leonardo';
+    var nome2 = 'Leonardo';
+
+    // let nome
+    // var nome2
+
+    if (verdadeira) {
+        let nome = 'Teramatsu';
+        console.log(nome, nome2);
+
+        if (verdadeira) {
+            let nome = 'Outra coisa';
+            console.log(nome, nome2);
+        }
+    }
+
+Daí, por conta dessa natureza do let, conseguimos ter os níveis de prioridade do que considerar no valor que foi atribuído para a variável let. Ou seja, em relação ao let denotado como nome, no código acima, ele vai escalando do bloco mais interno que estiver para fora, essa é a ordem de prioridade
+
+    const verdadeira = true;
+
+    // let tem escopo de bloco { ... bloco }
+    // var só tem escopo de função
+
+    let nome = 'Leonardo';
+    var nome2 = 'Leonardo';
+
+    // let nome
+    // var nome2
+
+    if (verdadeira) {
+        let nome = 'Teramatsu';
+        console.log(nome, nome2);
+
+        if (verdadeira) {
+            // let nome = 'Outra coisa';
+            console.log(nome, nome2);
+        }
+    }
+
+Como podemos ver aqui, agora que o let nome que está no bloco aninhado está comentado, então o console.log dentro desse bloco aninhado vai considerar o valor atribuído ao nome, do próximo escopo de bloco maior, que é o primeiro bloco if que foi criado
+
+    const verdadeira = true;
+
+    // let tem escopo de bloco { ... bloco }
+    // var só tem escopo de função
+
+    let nome = 'Leonardo';
+    var nome2 = 'Leonardo';
+
+    // let nome
+    // var nome2
+
+    if (verdadeira) {
+        // let nome = 'Teramatsu';
+        console.log(nome, nome2);
+
+        if (verdadeira) {
+            // let nome = 'Outra coisa';
+            console.log(nome, nome2);
+        }
+    }
+
+Analogamente, com a ideia acima, visto que agora o let nome do primeiro bloco if está comentado, agora qual valor do nome os dois console.logs vão considerar? No caso, seria o bloco o nível de escopo antecessor, nesse caso, agora é o que está fora do bloco, o let nome = 'Leonardo'.
+
+No caso, visto que a variável nome está definido usando o let, sabemos que o let ele considera o escopo pelo bloco. Daí, os seus níveis são considerados começando daquela com o nível mais interno como a primeira prioridade e a ordem vai em direção para os escopos de níveis cada vez mais externo.
+
+Visto essa funcionalidade da variável let, agora, vamos ver para a variável var. Ou seja, vemos que para a variável var o escopo dela é pela função. Antes de vermos mais à fundo disso, vamos repetir a mesma coisa que fizemos para a variável let para a var, para realizar um experimento
+
+    const verdadeira = true;
+
+    // let tem escopo de bloco { ... bloco }
+    // var só tem escopo de função
+
+    let nome = 'Leonardo';
+    var nome2 = 'Leonardo';
+    var nome2 = 'Takashi';
+    console.log(nome, nome2);
+
+    // let nome
+    // var nome2
+
+    if (verdadeira) {
+        var nome2 = 'Teramatsu';
+        console.log(nome, nome2);
+
+        if (verdadeira) {
+            var nome2 = 'Outra coisa';
+            console.log(nome, nome2);
+        }
+    }
+
+Note que, ao rodarmos o código acima donde o var nome2 é redeclarada várias vezes, vemos que o var nome2 pode ser redeclarada no mesmo nível de escopo dela mesma e, em seguida, nos outros escopos mais internos ela foi sendo redeclarada várias vezes e o console.log captou direitinho cada redeclaração dessa variável, var nome2.
+
+Mas, agora, vamos ver o seguinte experimento. Se chamarmos o console.log depois desse bloco, o que será retornado?
+
+    const verdadeira = true;
+
+    // let tem escopo de bloco { ... bloco }
+    // var só tem escopo de função
+
+    let nome = 'Leonardo';
+    var nome2 = 'Leonardo';
+    var nome2 = 'Takashi';
+    console.log(nome, nome2);
+
+    // let nome
+    // var nome2
+
+    if (verdadeira) {
+        let nome = 'Teramatsu';
+        var nome2 = 'Teramatsu';
+        console.log(nome, nome2);
+
+        if (verdadeira) {
+            let nome = 'Takashi';
+            var nome2 = 'Outra coisa';
+            console.log(nome, nome2);
+        }
+    }
+
+    console.log(nome, nome2);
+
+Note que, ao rodarmos o código, esse último console.log que está fora do bloco é retornado nela o seguinte
+
+    Leonardo Outra Coisa
+
+Ou seja, significa que mesmo o let sendo redeclarado com outros valores atribuídos nela cada vez que entra no escopo bloco interno, quando chamamos a variável let nome fora desses escopos internos é retornado o valor atribuído para o let nome naquele escopo em que ela está, neste caso o let nome = 'Leonardo'. Diferentemente da variável var, que o console.log retornou foi o último valor atribuído nela na redeclaração dessa variável, var nome2, independentemente de qual nível de escopo de bloco que elafoi redeclarada.
+
+Obs: Agora, tenta comentar o let nome = 'Leonardo', que está declarada no maior nível de escopo e tenta rodar o código para ver o que será devolvido pelo último console.log? Creio que isso ajudará a entender melhor a ideia do escopo de bloco para let.
+
+No caso, entendendo melhor a ideia do escopo de função da variável var, é que essa variável usa-se os níveis de escopo para função
+
+    var falaOi = 'Oi';
+    function FalaOi() {
+        var falaOi = 'Olá';
+        console.log(falaOi);
+    }
+    FalaOi();
+
+No caso, a variável var falaOi acima ela está sendo declarada duas vezes, uma fora do escopo da função e outra dentro. No caso, será retornado o 'Olá'. Mas agora, se tentarmos realizar o seguinte
+
+    var falaOi = 'Oi';
+    function FalaOi() {
+        var falaOi = 'Olá';
+    }
+    console.log(falaOi);
+    FalaOi();
+
+Nessa situação, visto que o escopo da variável var é pela função, então o valor do var falaOi que será retornado será o 'Oi' e isso mesmo que chamamos o console.log depois da função FalaOi executada
+
+    var falaOi = 'Oi';
+    function FalaOi() {
+        var falaOi = 'Olá';
+    }
+    console.log(falaOi);
+    FalaOi();
+    console.log(falaOi);
+
+Em dois console.logs será retornado o valor 'Oi' que foi definido no início. No caso, se comentarmos o var falaOi que foi definido fora do escopo da função FalaOi e tentarmos executar novamente o código dará um erro, pois o único lugar onde o var falaOi foi declarado será dentro da função FalaOi, donde quando chamado fora desse escopo será considerado inexistente.
+
+Agora, o último conceito que quero abordar aqui seria os momentos em que as variáveis são declaradas. Vejamos o seguinte cenário
+
+    console.log(sobrenome);
+
+    var sobrenome = 'Teramatsu';
+
+O que vc acha que será devolvido nessa situação?
+
+A resposta é que ela será retornado um undefined. Diferentemente de se comentarmos a variável sobrenome e deixar só o console.log(sobrenome) rodando, que será retornado um erro. Esse é um caso muito típico para as variáveis var e quando declaramos uma função depois que damos o console.log.
+
+Bom, basicamente, a situação acima que está acontecendo é que, quando ocorre a leitura do código o que está acontecendo é que o leitor está levando todas as variáveis var no início da linha para depois possibilitar a chamada da mesma. Ou seja, o código acima ela é exatamente o mesmo que o seguinte quando ocorre a leitura 
+
+    var sobrenome;
+
+    console.log(sobrenome);
+
+    sobrenome = 'Teramatsu';
+
+Esse fenômeno é conhecido como roisting. Algo que, por exemplo, para a variável let não acontece
+
+    console.log(sobrenome);
+
+    // var sobrenome = 'Teramatsu';
+    let sobrenome = 'Teramatsu';
+
+Nesse caso, será retornado um erro.
 
 ## Aula 16 - Atribuição via desestruturação (Arrays):
 
