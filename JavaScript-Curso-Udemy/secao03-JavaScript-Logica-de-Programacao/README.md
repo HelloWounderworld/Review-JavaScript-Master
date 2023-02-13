@@ -916,6 +916,78 @@ Esse fenômeno é conhecido como roisting. Algo que, por exemplo, para a variáv
 Nesse caso, será retornado um erro.
 
 ## Aula 16 - Atribuição via desestruturação (Arrays):
+Vamos ver sobre atribuição via desestruturação (destructuring assignment) em arrays.
+
+Lembra quando fizemos um exercício em que tínhamos as seguintes variáveis definidas
+
+    let a = 'A';
+    let b = 'B';
+    let c = 'C';
+
+E o objetivo desse exercício era vc alternar entre de "a => 'C'", " b => 'A'" e "c => 'B'" em um código mais enxuto possível. Bom, com os recursos que eu tive e dos que eu não sabia eu quase consegui fazer um código que pudesse resolver o exercício em uma única tacada
+
+    a, b, c = c, a, b
+
+No caso, a linha de pensamento acima está certo, exceto uma única coisa que era necessário para que o raciocínio acima se consolidasse em JavaScript
+
+    [a, b, c] = [c, a, b]
+
+No caso, acima seria a forma completa.
+
+Basicamente, a forma acima foi exatamente um exemplo de aplicação via desestruturação do array.
+
+No caso, a definição seria uma expressão de JavaScript que possibilita extrair dados de arrays ou objetos em variáveis distintas.
+
+    https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+Um outro exemplo que retrata bem isso
+
+    // const numeros = [1, 2, 3];
+    const letras = [c, a, b];
+    [a, b, c] = letras;
+
+    console.log(a, b, c);
+
+Uma outra forma mais sofisticada de aplicar atribuição via desestruturação
+
+    const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    // const primeiroNumero = numeros[0];
+    const [primeiroNumero, segundoNumero] = numeros;
+    const [FirstNumber, ...SecondNumber] = numeros;
+
+    console.log(numeros);
+    console.log(primeiroNumero, segundoNumero);
+    console.log(FirstNumber, SecondNumber);
+
+Nesse exemplo de cima usamos o "...". Basicamente, ela tem as seguintes funcionalidades, uma como foi visto acima, pegando o resto (rest) da lista das que não foi pego e a outra maneira de uso seria para espalhar/distribuir algo, que é conhecido como spread.
+
+Podemos, também, nessa brincadeira selecionar os tipos de elementos que queremos atribuir nas variáveis que estamos definindo tbm
+
+    const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    // const primeiroNumero = numeros[0];
+    const [primeiroNumero, segundoNumero] = numeros;
+    const [FirstNumber, ...SecondNumber] = numeros;
+    const [um, , tres, , cinco, , sete] = numeros;
+
+    console.log(numeros);
+    console.log(primeiroNumero, segundoNumero);
+    console.log(FirstNumber, SecondNumber);
+    console.log(um, tres, cinco, sete);
+
+Agora, uma outra forma mais complexa de fazer atribuição via desestruturação seria o seguinte
+
+    const numbers = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ];
+    const [, [, , seis]] = numbers;
+    console.log(numbers[1][2]);
+    console.log(seis);
+
+Basicamente, o conceito acima é de matriz. E para realizar uma atribuição por desestruturação de um certo elemento, 6, por exemplo, vamos precisar realizar o seguinte, primeiro pular uma linha, em seguida pular duas colunas e depois definir a variável seis.
+
+Confesso que esse modo de atribuição via desestruturação é complicado e chato de manusear.
 
 ## Aula 17 - Atribuição via desestruturação (Objetos):
 
