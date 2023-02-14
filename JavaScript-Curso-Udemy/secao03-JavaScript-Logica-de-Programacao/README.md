@@ -990,6 +990,138 @@ Basicamente, o conceito acima é de matriz. E para realizar uma atribuição por
 Confesso que esse modo de atribuição via desestruturação é complicado e chato de manusear.
 
 ## Aula 17 - Atribuição via desestruturação (Objetos):
+Vamos ver, agora, a atribuição via desestruturação (destruturing assignment) para objetos, {}.
+
+    https://www.freecodecamp.org/portuguese/news/como-usar-a-desestruturacao-de-arrays-e-objetos-em-javascript/#:~:text=A%20atribui%C3%A7%C3%A3o%20de%20desestrutura%C3%A7%C3%A3o%20%C3%A9,e%20atribu%C3%AD%2Dlos%20%C3%A0s%20vari%C3%A1veis.
+
+Basicamente, a aplicação é análogo com o que foi visto no array
+
+    const pessoa = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        endereco: {
+            rua: 'Av. Brasil',
+            numero: 320
+        }
+    };
+
+    const { nome, sobrenome, idade } = pessoa;
+    console.log(nome, sobrenome, idade);
+
+Mas se por acaso não existir o elemento nome dentro do objeto? Nessa brincadeira, podemos definir uma
+
+    const person = {
+        lasName: 'Teramatsu',
+        age: 26,
+        endereco: {
+            rua: 'Av. Brasil',
+            numero: 320
+        }
+    };
+
+    const { name = 'Não existe', lasName, age} = person;
+    console.log(name, sobrenome, idade);
+
+Podemos, também, definir um elemento dentro dessa atribuição via desestruturação e dentro desse elemento definir uma variável
+
+    const pessoa = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        endereco: {
+            rua: 'Av. Brasil',
+            numero: 320
+        }
+    };
+
+    // const { nome, sobrenome, idade } = pessoa;
+    const { nome: teste = '', sobrenome, idade } = pessoa;
+    console.log(teste, sobrenome, idade);
+    console.log(pessoa.nome);
+
+No caso, a variável teste passa a ter o valor definido pelo elemento nome que está dentro do objeto pessoa.
+
+Agora, se eu quiser acessar os elementos definidos dentro de endereco?? O formato a seguir só devolverá um objeto
+
+    const pessoa = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        endereco: {
+            rua: 'Av. Brasil',
+            numero: 320
+        }
+    };
+
+    // const { nome, sobrenome, idade } = pessoa;
+    const { nome: teste = '', sobrenome, idade, endereco } = pessoa;
+    console.log(teste, sobrenome, idade);
+    console.log(endereco);
+    console.log(pessoa.nome);
+
+No caso, se eu quiser acessar os elementos dentro de endereco por atribuição via desestruturação, teria que ser da seguinte forma
+
+    const pessoa = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        endereco: {
+            rua: 'Av. Brasil',
+            numero: 320
+        }
+    };
+
+    // const { nome, sobrenome, idade } = pessoa;
+    // com um valor padrao para teste, que é o vazio, caso o elemento nome não esteja definido no objeto
+    const { nome: teste = '', sobrenome, idade, endereco: { rua, numero } } = pessoa;
+    console.log(teste, sobrenome, idade);
+    // console.log(endereco);
+    console.log(rua, numero);
+    console.log(pessoa.nome);
+
+Mas isso não nega a possibilidade de novamente pegarmos o endereco em forma de objeto inteiro mesmo pego os valores definidos dentro dele
+
+    const pessoa = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        endereco: {
+            rua: 'Av. Brasil',
+            numero: 320
+        }
+    };
+
+    // const { nome, sobrenome, idade } = pessoa;
+    const { nome: teste = '', sobrenome, idade, endereco: { rua, numero }, endereco } = pessoa;
+    console.log(teste, sobrenome, idade);
+    console.log(endereco);
+    console.log(rua, numero);
+    console.log(pessoa.nome);
+
+A mesma forma como definimos o valor padrão para o elemento nome, quando colocamos o teste = '', conseguimos fazer para os subelementos de um subobjetos
+
+    const pessoa = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        endereco: {
+            rua: 'Av. Brasil',
+            numero: 320
+        }
+    };
+
+    // const { nome, sobrenome, idade } = pessoa;
+    const { nome: teste = '', sobrenome, idade, endereco: { rua: r = 123456, numero }, endereco } = pessoa;
+    console.log(teste, sobrenome, idade);
+    console.log(endereco);
+    // console.log(rua, numero);
+    console.log(r, numero);
+    console.log(pessoa.nome);
+
+Da mesma forma que pegamos o resto (rest) no array, podemos fazer isso para objetos
+
+    
 
 ## Aula 18 - For - Clássico - Estrutura de repetição:
 
