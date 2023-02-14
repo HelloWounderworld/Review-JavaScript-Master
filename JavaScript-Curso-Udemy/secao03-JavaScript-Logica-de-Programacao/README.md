@@ -1121,7 +1121,25 @@ A mesma forma como definimos o valor padrão para o elemento nome, quando coloca
 
 Da mesma forma que pegamos o resto (rest) no array, podemos fazer isso para objetos
 
-    
+    const pessoa = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26,
+        endereco: {
+            rua: 'Av. Brasil',
+            numero: 320
+        }
+    };
+
+    // const { nome, sobrenome, idade } = pessoa;
+    // const { nome: teste = '', sobrenome, idade, endereco: { rua: r = 123456, numero }, endereco } = pessoa;
+    const { nome, ...resto } = pessoa;
+    // console.log(teste, sobrenome, idade);
+    // console.log(endereco);
+    // console.log(rua, numero);
+    // console.log(r, numero);
+    console.log(nome, resto);
+    console.log(pessoa.nome);
 
 ## Aula 18 - For - Clássico - Estrutura de repetição:
 
