@@ -1195,12 +1195,116 @@ Vamos usar o arquivo html e usar a estrutura for para criar algumas divs dentro 
 As divs que queremos criar no arquivo html.
 
 ## Aula 20 - DOM e a árvore do DOM:
+Vamos aprender sobre o DOM (Document Object Model) e a sua árvore.
+
+    https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
+
+    https://developer.mozilla.org/pt-BR/docs/Web/API/Document_Object_Model
+
+Vimos, até agora, que no arquivo html rodado no navegador, no console, o objeto global, o mais global, que temos é o window. E dentro de window temos o document, que é o que representa o arquivo html
+
+    Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+
+    #document
+
+Ciente disso, ao abrirmos o index.html, da última aula de exercício, e rodarmos ela em algum navegador, ao jogarmos no console "window.document" irá aparecer todo o corpo do arquivo html que criamos. Daí, onde aparece o DOM nisso? Ela aparece exatamente nas tags que criamos via JavaScript usando o document.
+
+No caso, sempre que estivermos falando de DOM, estamos nos referindo ao navegador, que é uma interface de objetos que permitem manipular um objeto dentro da página.
 
 ## Aula 21 - For in - Estrutura de repetição:
+Vamos ver sobre a outra estrutura de for, que é o for in.
+
+Vimos que o for, quando usamos, ele nos permite iterar usando a ideia de progressão artimética. Mas existe o for in que ela nos fornece uma forma mais direta de iterar, principalmente, uma lista
+
+    const frutas = ['Pera', 'Maçã', 'Uva'];
+
+    for (let i in frutas) {
+        console.log(i);
+        console.log(frutas[i]);
+    }
+
+No caso, o let i in, ele está iterando a lista e lendo os seus índices. Como prova disso, conseguimos ver que no segundo for está sendo devolvido o respectivo elemento que foi definido para cada índice da sequência.
+
+Basicamente, o for in ele lê os índices ou chaves do objeto.
+
+Abaixo está o uso o for in para objetos, chave
+
+    const pessoa = {
+        nome: 'Leonardo',
+        sobrenome: 'Teramatsu',
+        idade: 26
+    };
+
+    for (let i in pessoa) {
+        console.log(i);
+        console.log(pessoa[i]);
+    };
+
+Note que, o console.log que devolve o índice i ele devolve exatamente os índices que foram definidos dentro do objeto pessoa (nome, sobrenome e idade), mas a forma como consultamos os valores que foram atribuídos para cada índice, não é a forma usual que vismo antes (pessoa.nome, por exemplo), mas, sim, devemos passar esse índice i como um array dentro do objeto pessoa que foi definido com chaves.
 
 ## Aula 22 - For of - Estrutura de repetição:
+Vamos ver a outra estrutura de repetição chamado for of.
+
+Se usarmos o for in, que vimos na última aula, faríamos uma espécie como segue
+
+    const nome = 'Leonardo Takashi Teramatsu';
+
+    for (let i in nome) {
+        console.log(i, nome[i]);
+    }
+
+Agora, se formos usar o for of ficaria o seguinte
+
+    const nome = 'Leonardo Takashi Teramatsu';
+
+    for (let valor of nome) {
+        console.log(valor);
+    }
+
+Ou seja, note que, o for of, diferentemente de for in, ele devolve diretamente o valor que está definido naquele índice pela variável let valor que estamos usando para iterar o const nome
+
+    const nomes = ['Leonardo', 'João', 'Lucas'];
+
+    for (let valor of nomes) {
+        console.log(valor);
+    }
+
+Então, isso não faz necessário ter que usar o índice para conseguir consultar o valor que esse índice está definido, pois ele nos cospe diretamente o valor que está definido naquele índice.
+
+Bom, daí vem a pergunta. Vimos que tem for, for in e for of. Quais deles são úteis? Daí a resposta para isso é depende do cenário. Conforme o cenário, vc vai vendo qual delas é mais adequado para o uso.
+
+Uma outra alternativa que temos para iterar os valores diretamente dentro dos arrays, seria o forEach
+
+    const nomes = ['Leonardo', 'João', 'Lucas'];
+
+    for (let valor of nomes) {
+        console.log(valor);
+    }
+
+    nomes.forEach(function(el, i, array) {
+        console.log(el, i, array);
+    });
+
+Note que, para iterar uma lista, o forEach, vc consegue definir se vai querer iterar o valor, índice e a lista inteira. Ou seja, ele tem mais flexibilidade para exercer alguma das estruturas for que definimos ou simultanemante tbm.
+
+Obs: O for of para objetos do tipo chave, não vai funcionar!!!!!!!
+
+- for - Geralmente com iteráveis (array ou strings)
+
+- for in - Retorna o índice ou chave (string, array ou objetos)
+
+- for of - Retorna o valor em si (iteráveis, array ou strings)
 
 ## Aula 23 - Exercícios com NodeList (Browser):
+Vamos fazer um exercício de fixação!
+
+O objetivo do exercício é conseguir colocar a cor de fundo e mudar a cor do texto da seguinte div
+
+    <div class="paragrafos">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p>Ex pariatur aperiam iure accusamus odio nemo nulla, voluptatibus illo, sed voluptatum deleniti velit saepe.</p>
+        <p>Minus illum recusandae temporibus corporis expedita debitis.</p>
+    </div>
 
 ## Aula 24 - While e Do While - Estrutura de repetição:
 
