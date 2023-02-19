@@ -1180,9 +1180,19 @@ Da mesma forma, podemos usar o for para percorrer uma lista
         console.log(frutas[i]);
     };
 
-
-
 ## Aula 19 - Exercícios com for:
+Vamos praticar essa estrutura for para fixar mais os conceitos na sua cabeça.
+
+Vamos usar o arquivo html e usar a estrutura for para criar algumas divs dentro do aquivo html
+
+    const elementos = [
+        {tag: 'p', texto: 'Frase 1'},
+        {tag: 'div', texto: 'Frase 2'},
+        {tag: 'footer', texto: 'Frase 3'},
+        {tag: 'section', texto: 'Frase 4'}
+    ]
+
+As divs que queremos criar no arquivo html.
 
 ## Aula 20 - DOM e a árvore do DOM:
 
