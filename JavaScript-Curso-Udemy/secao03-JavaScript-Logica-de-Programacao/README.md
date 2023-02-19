@@ -1142,6 +1142,45 @@ Da mesma forma que pegamos o resto (rest) no array, podemos fazer isso para obje
     console.log(pessoa.nome);
 
 ## Aula 18 - For - Clássico - Estrutura de repetição:
+Vamos ver sobre a estrutura clássica de repetição, o for.
+
+No caso, usamos muito essa estrutura, pois ele está presente em muita, mas muita, linguagem de programação.
+
+No caso, a sintaxe para essa estrutura é o "for"
+
+    for (let i = 0; i <= 5; i++) {
+        console.log('range: ', i);
+        console.log(`Linha ${i}`);
+    };
+
+Os parâmetros para a repetição podem ser feitas de diversas formas não se restringindo apenas à números posisitivos. Vc pode usar qualquer número inteiro
+
+    for (let i = -100; i <= 500; i++) {
+        console.log(`Linha ${i}`);
+    };
+
+    for (let i = 500; i >= 400; i -=10) {
+        console.log(`Linha ${i}`);
+    };
+
+A analogia é que vc consiga fazer algo que similariza à uma progressão aritmética, donde vc tem a liberdade de conseguir definir a razão e o índice inicial do conteúdo.
+
+Podemos usar essa estrutura e dentro dela colocar as condicionais para resolvermos o problema
+
+    for (let i = 0; i <= 10; i++) {
+        const par = i % 2 === 0 ? 'par' : 'ímpar';
+        console.log(i, par);
+    };
+
+Da mesma forma, podemos usar o for para percorrer uma lista
+
+    const frutas = ['Maçã', 'Pêra', 'Uva'];
+
+    for (let i = 0; i < frutas.length; i++){
+        console.log(frutas[i]);
+    };
+
+
 
 ## Aula 19 - Exercícios com for:
 
