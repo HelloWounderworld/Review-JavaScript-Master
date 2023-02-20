@@ -1474,10 +1474,171 @@ A sentença é o seguinte
     // Use a função com números de 0 a 100
 
 ## Aula 29 - Tratando e lançando erros (try, catch, throw):
+Vamos ver sobre tratamento e lançamento de erros, try, catch e throw.
+
+Primeiro, vamos gerar o um erro aqui
+
+    console.log(naoExisto);
+
+Bom, o console acima, vai gerar um erro que mostra que o "naoExisto" não está definido.
+
+No caso, para tratarmos esses erros que existem as sintaxes que foram mencionadas acima
+
+    try {
+        console.log(naoExisto);
+    } catch(err) {
+        console.log('naoExiste não existe!');
+        // console.log(err);
+    }
+
+Basicamente, o que está acontecendo acima é o seguinte. O try ele vai tentar executar uma ação, daí o catch ele irá captar qual seria o erro que está acontecendo caso a tal ação, a sua execução, não seja bem sucedida, donde pode ser expresso propriamente o erro pela variável 'err' que foi definida ou colocar um erro personalizado.
+
+Obs: Por meios didáticos, está sendo usado o console para mostrar qual tipo de erro que está acontecendo. Entretanto, precisamos lembrar que isso feito na vida real é algo potencialmente perigoso, pois estaria correndo o risco de exposição de dados importantes do seu trabalho ou de uma empresa. No caso, tais erros que estaremos simulando não pode chegar nas mãos dos usuários.
+
+Temos a sintaxe throw tbm que serve para lançar algum erro personalizado e o catch captar esse tal erro personalizado
+
+    function soma(x, y) {
+        if (typeof x !== 'number' || typeof y !== 'number') {
+            throw('x e y precisam ser números.');
+        }
+
+        return x + y;
+    }
+
+    try {
+        console.log(soma(1,2));
+        console.log(soma('1',2));
+    } catch(err) {
+        console.log(err);
+    }
+
+No caso, o que foi colocado dentro do throw, será captado pelo "err" que foi definido dentro do catch. Ou seja, em vez de mostrar o erro em detalhe pelo catch, ele irá exibir esse erro personalizado que foi definido pelo throw dentro da função soma.
+
+Agora, se por acaso vc quiser que o throw lance o erro estilo JavaScript, detalhando tudo bastaria colocar o seguinte comando
+
+    function soma(x, y) {
+        if (typeof x !== 'number' || typeof y !== 'number') {
+            // throw('x e y precisam ser números.');
+            throw new Error('x e y precisam ser números.');
+        }
+
+        return x + y;
+    }
+
+    try {
+        console.log(soma(1,2));
+        console.log(soma('1',2));
+    } catch(err) {
+        console.log(err);
+    }
+
+Assim, o catch irá exibir o que foi definido no throw. E tem vários tipos, tanto Error quanto ReferenceError
+
+    function soma(x, y) {
+        if (typeof x !== 'number' || typeof y !== 'number') {
+            // throw('x e y precisam ser números.');
+            // throw new Error('x e y precisam ser números.');
+            throw new ReferenceError('x e y precisam ser números.');
+        }
+
+        return x + y;
+    }
+
+    try {
+        console.log(soma(1,2));
+        console.log(soma('1',2));
+    } catch(err) {
+        console.log(err);
+    }
 
 ## Aula 30 - Tratando e lançando erros (try, catch, finally):
+Vamos continuar com mais tratamento de erros.
+
+No caso, vimos try, catch e throw. Mas existe um outro sintaxe que podemos usar tbm que é o finally. Esse finally sempre será executado!
+
+    try {
+        console.log('Abri um arquivo');
+        console.log('Manipulei o arquivo e gerou um erro');
+        console.log('Fechei o arquivo');
+        console.log(a);
+    } catch (e) {
+        console.log(e);
+        console.log('Uma msg mais amiǵável');
+        console.log('Tratando o erro');
+    } finally {
+        console.log('FINALLY: Eu sempre sou executado');
+    }
+
+Basicamente, o finally, ela serve para vc conseguir lidar com a seguinte situação. Existem casos em que dá erro e que o processo para bem no ponto em que não é desejável, seja ela fechar um arquivo, ou apagar alguns dados, etc... No caso, o finally ele permite que quando tal evento aconteça, independente se deu erro ou não, ele consiga executar a tal ação.
+
+Podemos, tbm, colocar try, catch e finally dentro de algum try ou catch ou finally tbm.
 
 ## Aula 31 - setInterval e setTimeout:
+Vamos mostrar duas funções que estão disponíveis tanto no node quanto no navegador, setInterval e setTimeout.
+
+No caso, començando pelo setInterval, essa função ele pode configurar um intervalo de tempo para que uma função ou alguma ação seja executada em um determinado momento. Um exemplo básico disso seria
+
+    function mostraHora() {
+        let data = new Date();
+
+        return data.toLocaleDateString('pt-BR', {
+            hour12: false
+        });
+    }
+
+    function funcaoDoInterval() {
+        console.log(mostraHora());
+    }
+
+    setInterval(funcaoDoInterval, 1000);
+
+Basicamente, no intervalo de a cada 1 segundo vc consegue executar a função. E isso irá acontecer sem parar, a não ser que vc coloque alguma condição dê um stop.
+
+Aqui está uma outra forma mais enxuta de executar o código
+
+    function mostraHora() {
+        let data = new Date();
+
+        return data.toLocaleDateString('pt-BR', {
+            hour12: false
+        });
+    }
+
+    // function funcaoDoInterval() {
+    //     console.log(mostraHora());
+    // }
+
+    // setInterval(funcaoDoInterval, 1000);
+    setInterval(function () {
+        console.log(mostraHora());
+    }, 1000);
+
+Já o setTimeout, ele executa apenas uma vez e para, donde serve para parar o setInterval tbm
+
+    function mostraHora() {
+        let data = new Date();
+
+        return data.toLocaleDateString('pt-BR', {
+            hour12: false
+        });
+    }
+
+    // function funcaoDoInterval() {
+    //     console.log(mostraHora());
+    // }
+
+    // setInterval(funcaoDoInterval, 1000);
+    // setInterval(function () {
+    //     console.log(mostraHora());
+    // }, 1000);
+
+    const timer = setInterval(function () {
+        console.log(mostraHora());
+    }, 1000);
+
+    setTimeout(function () {
+        clearInterval(timer);
+    }, 1000);
 
 ## Aula 32 - Exercício - Criando um timer com setInterval:
 
