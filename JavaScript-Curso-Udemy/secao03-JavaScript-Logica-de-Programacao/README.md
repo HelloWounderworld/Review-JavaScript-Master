@@ -1473,8 +1473,6 @@ A sentença é o seguinte
     // Checar se o número é realmente um número
     // Use a função com números de 0 a 100
 
-
-
 ## Aula 29 - Tratando e lançando erros (try, catch, throw):
 
 ## Aula 30 - Tratando e lançando erros (try, catch, finally):
