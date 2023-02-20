@@ -1307,14 +1307,173 @@ O objetivo do exercício é conseguir colocar a cor de fundo e mudar a cor do te
     </div>
 
 ## Aula 24 - While e Do While - Estrutura de repetição:
+Vamos ver uma outra estrutura de repetição, o While e Do While.
+
+Uma característica que difere dessa estrutura de repetição com o for, é que ela realiza as repetições mediante à condicionais que vc pode montar da forma como vc quiser. Ou seja, isso te permite, por exemplo, montar alguma condicional que faça do while entrar em um loop infinito, dependendo do tipo de condicional que vc define
+
+    let i = 0;
+
+    while (i <= 10) {
+        console.log(i);
+        i++;
+    }
+
+Note que, já com a forma acima, se quisermos, conseguimos construir um loop infinito, que é tirando o "i++;"
+
+    const nome = 'Leonardo';
+    let j = 0;
+
+    while (j < nome.length) {
+        console.log(nome[j]);
+        j++;
+    }
+
+A mesma analogia funciona acima.
+
+Vamos ver, agora, um caso mais real
+
+    function random (min, max) {
+        const r = Math.random() * (max-min) + min;
+        return Math.floor(r);
+    }
+
+    const min = 1;
+    const max = 50;
+    let rand = random(min, max);
+    console.log(rand);
+
+    while (rand !== 10) {
+        rand = random(min, max);
+        console.log(rand);
+    }
+
+Note que, a função random que definimos é o que atualiza toda hora os valores do rand visto que a condição em while esteja true.
+
+Agora, vamos ver sobre o Do While.
+
+Basicamente, o Do while ele irá executar primeiro a ação para depois checar a condição
+
+    function random (min, max) {
+        const r = Math.random() * (max-min) + min;
+        return Math.floor(r);
+    }
+
+    const min = 1;
+    const max = 50;
+    // let rand = random(min, max);
+    let rand = 10;
+    console.log(rand);
+
+    while (rand !== 10) {
+        rand = random(min, max);
+        console.log(rand);
+    }
+    console.log('------------------');
+    do {
+        rand = random(min, max);
+        console.log(rand); 
+    } while (rand !== 10);
+
+Você vai ver que nesse código acima, o while não irá rodar, mas o do while irá, pois enquanto em while, o rand, de ante mão, já está como 10, em do while, como é o inverso do while, ele irá atualizar primeiro e depois irá checar a condicional.
+
+No caso, o do while, ele sempre irá executar, pelo menos, uma vez o código, pois a conferência da condicional somente irá ocorrer depois disso.
 
 ## Aula 25 - Break e Continue:
+Vamos aprender a usar o break e o continue.
+
+No caso, vamos ver primeiro a sintaxe continue
+
+    const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    for (let numero of numeros) {
+        if (numero === 2) {
+            continue;
+        }
+        console.log(numero);
+    }
+
+Basicamente, o que está acontecendo acima, é que quando a variável numero for, de fato, 2, então ele irá entrar na condicional e dará continuidade sem executar a linha dos códigos que estão vindo posteriormente.
+
+No caso, literalmente, irá dizer que visto que é 2, então eu não quero que vc execute a tal ação que está vindo adiante para esse valor, mas tbm eu não quero que pare a iteração dando continuidade nela.
+
+Mas aí, qual é a principal vantagem de usar o continue, assim vale para o break. Está no fato dela te ajudar otimizar a velocidade de compilação do seu código de não ter a necessidade de realizar outras tarefas desnecessárias. Ou seja, ela te ajuda a refinar a execução somente o necessário e o suficiente que vc precisa. E isso, no ponto de vista computacional, ela é muito, mas muito, eficiente dependendo da forma como vc saiba usar essas duas sintaxes para otimizar a compilação do seu código.
+
+No caso, usando o break
+
+    const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    for (let numero of numeros) {
+
+        if (numero === 7) {
+            console.log(`Achei o número ${numero}`);
+            break;
+        }
+
+        if (numero === 2 || numero === 5) {
+            console.log(`Puleir o o número ${numero}`);
+            continue;
+        }
+
+        console.log(numero);
+    }
+
+Basicamente, o código acima me fala, se eu chegar no número 7, então saia desse loop.
+
+O mesmo vale para o uso dessas sintaxes para a estrutura while e Do while
+
+    let i = 0;
+
+    while (i < numeros.length) {
+        let numero = numeros[i];
+
+        if (numero === 2) {
+            console.log(`Pulei o número ${numero}`);
+            continue;
+        }
+
+        console.log(numero);
+
+        if (numero === 7) {
+            console.log(`${numero} encontrado, saindo...`);
+            break;
+        }
+
+        i++;
+    }
+
+Note que, o código acima vai dar um loop infinito. Tente ver o motivo!
 
 ## Aula 26 - Exercício com lógica de programação - 01:
+Vamos praticar tais exercícios.
+
+A sentença é o seguinte
+
+    // Escreva uma função que recebe 2 números e retorna o maior deles
 
 ## Aula 27 - Exercício com lógica de programação - 02:
+Vamos praticar tais exercícios.
+
+A sentença é o seguinte
+
+    // Escreva uma função chamada ePaisagem que
+    // recebe dois argumentos, larguna e altura
+    // de uma imagem (number).
+    // Retorne true e se a imagem estiver no modo paisagem.
 
 ## Aula 28 - Exercício com lógica de programação - 03:
+Vamos praticar tais exercícios.
+
+A sentença é o seguinte
+
+    // Escreva uma função que recebe um número e retorne o seguinte:
+    // Número é divisível por 3 = Fizz
+    // Número é divisível por 5 = Buzz
+    // Número é divisível por 3 e 5 = FizzBuzz
+    // Número NÃO é divisível por 3 e 5 = Retorna o próprio número
+    // Checar se o número é realmente um número
+    // Use a função com números de 0 a 100
+
+
 
 ## Aula 29 - Tratando e lançando erros (try, catch, throw):
 
