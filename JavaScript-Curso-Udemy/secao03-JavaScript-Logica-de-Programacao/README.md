@@ -1641,5 +1641,9 @@ Já o setTimeout, ele executa apenas uma vez e para, donde serve para parar o se
     }, 1000);
 
 ## Aula 32 - Exercício - Criando um timer com setInterval:
+Bom, no diretório da aula 32 temos o modelos que precisamos para fazermos o exercício.
+
+O objetivo é criar um cronômetro igualzinho ao que está no diretório relogio, mas do seu jeito.
 
 ## Aula 33 - Criando uma Lista de tarefas:
+O objetivo é realizar uma listar tarefas que nem está em lista-tarefas.

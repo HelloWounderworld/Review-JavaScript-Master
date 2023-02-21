@@ -18,6 +18,7 @@ function relogio() {
     }, 1000);
   }
 
+  // Esse aqui é a forma mais performatica que podemos fazer para usar o eventListerner
   document.addEventListener('click', function(e) {
     const el = e.target;
 
