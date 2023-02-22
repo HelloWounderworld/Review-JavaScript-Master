@@ -1646,4 +1646,272 @@ Bom, no diretório da aula 32 temos o modelos que precisamos para fazermos o exe
 O objetivo é criar um cronômetro igualzinho ao que está no diretório relogio, mas do seu jeito.
 
 ## Aula 33 - Criando uma Lista de tarefas:
-O objetivo é realizar uma listar tarefas que nem está em lista-tarefas.
+O objetivo é realizar uma listar tarefas que nem está em lista-tarefas. Entretanto, essa aula não será uma aula de exercícios, mas, sim, uma aula normal, pois veremos muito conteúdo novo (no ponto de vista de quem está estudando).
+
+Logo, inicialmente, no arquivo index.html, vamos colocar a seguinte alteração
+
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modelo</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
+
+    <body>
+
+    <section class="container">
+        <h1>Lista de tarefas</h1>
+        <p>
+        <input type="text" class="input-tarefa">
+        <button class="btn-tarefa">Adicionar nova tarefa</button>
+        </p>
+
+        <ul class="tarefas"></ul>
+    </section>
+
+    <script src="./assets/js/main.js"></script>
+    </body>
+
+    </html>
+
+Vamos agora trabalhar em cima disso. No caso, primeiro, vamos ter que selecionar as classes. Assim, no arquivo main.js que se localiza no diretório js que se encontra no diretório assets colocamos o seguinte
+
+    const inputTarefa = document.querySelector('.input-tarefa');
+    const btnTarefa = document.querySelector('.btn-tarefa');
+    const tarefas = document.querySelector('.tarefas');
+
+Primeiramente, vamos capturar o evento de click do botão "Adicionar nova tarefa".
+
+    function criaLi() {
+        const li = document.createElement('li');
+        return li;
+    }
+
+    // Captura o evento da tecla 'Enter'.
+    inputTarefa.addEventListener('keypress', function(e) {
+        console.log(e);
+    });
+
+    function criaTarefa(textoInput) {
+        // console.log(textoInput);
+        const li = criaLi();
+        li.innerText = textoInput;
+        tarefas.appendChild(li);
+    }
+
+    btnTarefa.addEventListener('click', function(e) {
+        // Isso serve para evitar de ficar retornando algo vazio e considerar algum retorno
+        // somente quando algo for colocado dentro do input.
+        if(!inputTarefa.value) return;
+        // console.log(inputTarefa.value);
+        criaTarefa(inputTarefa.value);
+    });
+
+No caso, um assunto novo seria o comando que pega o evento de pressionar a tecla "Enter" acima que é expresso pelo "inputTarefa.addEventListener('keypress')". Existem outros como 'keyup' e 'keydown', vale a pena dar uma olhada nesses eventos tbm. Por essa via, podemos saber o código de cada tecla que temos no nosso computador. Por exemplo, vendo pelo o que será exibido pelo 'console.log(e);', analisando pelo console do navegador, podemos ver que será retornado um objeto a cada tipo de tecla que é pressionada. Daí, ao abrirmos esse objeto podmeos ver o código dessa tecla pelo keyCode. A tecla 'Enter', por exemplo, o código dela é '13'.
+
+Consequentemente, podemos configurar as funções dentro desses eventos da seguinte maneira
+
+    // Captura o evento da tecla 'Enter'.
+    inputTarefa.addEventListener('keypress', function(e) {
+        // console.log(e);
+        if (e.keyCode === 13) {
+            console.log('Enter pressionado');
+        }
+    });
+
+Assim, concluindo a função acima, ficaria da seguinte forma
+
+    // Captura o evento da tecla 'Enter'.
+    inputTarefa.addEventListener('keypress', function(e) {
+        // console.log(e);
+        if (e.keyCode === 13) {
+            // console.log('Enter pressionado');
+            if(!inputTarefa.value) return;
+            criaTarefa(inputTarefa.value);
+        }
+    });
+
+Agora, vamos precisar de uma outra função que limpe o conteúdo que foi colocado dentro do input depois que adicionarmos alguma tarefa na lista
+
+    function limpaInput () {
+        inputTarefa.value = '';
+        // Esse evento faz o cursor '|', que fica dentro do input, piscando
+        inputTarefa.focus();
+    }
+
+Aqui, vemos um novo método aplicado, que é recurso do JavaScript, que é o '.focus()' que serve para fazer o cursor, '|', que fica dentro da aba do input ficar piscando.
+
+Assim, vamos chamar essa função dentro da função criaTarefa
+
+    function criaTarefa(textoInput) {
+        // console.log(textoInput);
+        const li = criaLi();
+        li.innerText = textoInput;
+        tarefas.appendChild(li);
+        limpaInput();
+    }
+
+Falta agora criar uma função que exclua as tarefas que foram criadas
+
+    function criaBotaoApagar(li) {
+        li.innerText += ' ';
+        const botaoApagar = document.createElement('button');
+        botaoApagar.innerText = 'Apagar';
+        li.appendChild(botaoApagar);
+    }
+
+No caso, agora, só precisamos chamar essa função dentro da função criaTarefa
+
+    function criaTarefa(textoInput) {
+        // console.log(textoInput);
+        const li = criaLi();
+        li.innerText = textoInput;
+        tarefas.appendChild(li);
+        limpaInput();
+        criaBotaoApagar(li);
+    }
+
+O que falta, agora, é conseguirmos validar o evento de click do botão apagar. Bom, o usual seria usar o método .classList.add() para colocar uma classe dentro desse botão para depois aplicarmos um eventAddListener nela, mas, desta vez, vamos fazer de uma forma diferente que é usando o setAttribute
+
+    function criaBotaoApagar(li) {
+        li.innerText += ' ';
+        const botaoApagar = document.createElement('button');
+        botaoApagar.innerText = 'Apagar';
+        botaoApagar.setAttribute('class', 'apagar');
+        li.appendChild(botaoApagar);
+    }
+
+Esse método, setAttribute, ela tem outras funcionalidades não se limitando apenas à criação de classes dentro das tags. Vale a pena dar uma olhada mais à fundo nisso. Bom, agora, só falta capturarmos o evento de click nesse botão de apagar. Usado o steAttribute, agora, foi mostrado que o botão apagar está sendo exibido no console de qual tarefa
+
+    document.addEventListener('click', function(e) {
+        // .target te permite saber qual a classe que está sendo capturado
+        const el = e.target;
+        console.log(el);
+    });
+
+Agora, só precisamos captar a classe de forma correta, então
+
+    document.addEventListener('click', function(e) {
+        // .target te permite saber qual a classe que está sendo capturado
+        const el = e.target;
+        // console.log(el);
+        if (el.classList.contains('apagar')) {
+            console.log('Apagar clicado');
+        }
+    });
+
+Bom, agora, visto que está sendo capturado o evento de click no apagar corretamente, vamos precisar definir uma função que, de fato, apague a tal lista. No caso, o que precisamos fazer seria que nessa situação o botão 'Apagar' está dentro de uma tag 'li' que está à um nível acima. E o que queremos é apagar essa tag de um nível acima
+
+    document.addEventListener('click', function(e) {
+        // .target te permite saber qual a classe que está sendo capturado
+        const el = e.target;
+        // console.log(el);
+        if (el.classList.contains('apagar')) {
+            // console.log('Apagar clicado');
+            console.log(el.parentElement);
+        }
+    });
+
+No caso, o console.log(el.parentElement), ele te mostra quem é a tag pai na tal a tag onde contém a classe, apagar, está inclusa. No caso, vamos remover esse elemento pai da seguinte forma
+
+    document.addEventListener('click', function(e) {
+        // .target te permite saber qual a classe que está sendo capturado
+        const el = e.target;
+        // console.log(el);
+        if (el.classList.contains('apagar')) {
+            // console.log('Apagar clicado');
+            // console.log(el.parentElement);
+            el.parentElement.remove();
+        }
+    });
+
+Isso já é o suficiente para remover a tarefa criada e que está listada.
+
+Bom, agora, só falta salvar essa tarefa. Para isso, vamos criar uma função para isso
+
+    function salvarTarefas() {
+        const liTarefas = tarefas.querySelectorAll('li');
+        console.log(liTarefas);
+    }
+
+Agora, vamos chamar essa função dentro da função criaTarefa
+
+    function criaTarefa(textoInput) {
+        // console.log(textoInput);
+        const li = criaLi();
+        li.innerText = textoInput;
+        tarefas.appendChild(li);
+        limpaInput();
+        criaBotaoApagar(li);
+        salvarTarefas();
+    }
+
+Daí, ao listarmos algumas tarefas, isso será mostrado pelo NodeList que está sendo exibido pela função salvarTarefas(). No caso, vamos querer salvar tbm essas tarefas que foram listadas tbm
+
+    function salvarTarefas() {
+        const liTarefas = tarefas.querySelectorAll('li');
+        const listaDeTarefas = [];
+        console.log(liTarefas);
+
+        for (let tarefa of liTarefas) {
+            // console.log(tarefa.innerText);
+            let tarefaTexto = tarefa.innerText;
+            tarefaTexto = tarefaTexto.replace('Apagar', '');
+        }
+    }
+
+Agora, vamos querer que essa função, assim como o nome já disse, salve elas na base local. Literalmente um cache. Daí, usa-se o localStorage para fazermos isso
+
+    function salvarTarefas() {
+        const liTarefas = tarefas.querySelectorAll('li');
+        const listaDeTarefas = [];
+        // console.log(liTarefas);
+
+        for (let tarefa of liTarefas) {
+            // console.log(tarefa.innerText);
+            let tarefaTexto = tarefa.innerText;
+            // .trim() - remove o espaço sobrando
+            tarefaTexto = tarefaTexto.replace('Apagar', '').trim();
+            // console.log(tarefaTexto);
+            listaDeTarefas.push(tarefaTexto);
+            // console.log(listaDeTarefas);
+        }
+
+        const tarefasJSON = JSON.stringify(listaDeTarefas);
+        console.log(tarefasJSON);
+        // No caso, só podemos salvar uma string dentro do localStorage
+        // o que foi necessário converter em JSON como acima
+        localStorage.setItem('tarefas', tarefasJSON);
+    }
+
+O lugar onde vc consegue consultar esse cache seria em application, abrindo o console pelo navegador.
+
+Agora, o que resta realizar seria salvar as tarefas até quando removemos algumas que estão listados. No caso, precisamos chamar essa função salvarTarefas até no evento que está removendo as tag li
+
+    document.addEventListener('click', function(e) {
+        // .target te permite saber qual a classe que está sendo capturado
+        const el = e.target;
+        // console.log(el);
+        if (el.classList.contains('apagar')) {
+            // console.log('Apagar clicado');
+            // console.log(el.parentElement);
+            el.parentElement.remove();
+            salvarTarefas();
+        }
+    });
+
+Visto que foi salvo no cache, vamos precisar exibir essas tarefas salvas sempre que revisitamos a página. Daí, vamos criar uma função para isso
+
+    function adicionaTarefasSalvas() {
+        const tarefas = localStorage.getItem('tarefas');
+        const listaDeTarefas = JSON.parse(tarefas);
+        // console.log(tarefas);
+        // console.log(listaDeTarefas);
+        for (let tarefa of listaDeTarefas) {
+            criaTarefa(tarefa);
+        }
+    }
