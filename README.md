@@ -32,8 +32,17 @@ data structures algorithms, Cory Althoff.
 
 - Clean Code, A Handbook of Agile Software Craftsmanship, Robert C. Martin.
 
+### Obs:
+Lembrando que esse repositório, somente, está voltado para a revisão conceitual da linguagem de programação JavaScript e TypeScript. Logo, frameworks relacionados, como ReactJS ou VueJS, assim como outras, o seu estudo teório, será realizado em outro repositório.
+
+Assim, como projetos usando a linguagem JavaScript ou TypeScript ou os seus respectivos frameworks, irei criar repositórios independentes, porém irei mencionar na forma de lista com um breve resumo nos repositórios de estudos teóricos/conceitos.
+
 ## Extensões:
 
 Foi utilizada a seguinte extensão para possibilidar a execução dos arquivos localmente em um navegador:
 
 - Live Server
+
+# Projetos que consegui criar:
+
+## Nome do Projeto e as tecnologias usadas nela suas versões e o que precisa para rodar na máquina da pessoa:
