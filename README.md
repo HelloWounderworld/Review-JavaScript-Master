@@ -19,6 +19,8 @@ Usarei as seguintes referências:
 
 Conforme a revisão dos conteúdos pelo curso da Udemy, em paralelo, irei lendo pelos lívros os conceitos que revisei para aprofundar mais ainda o conceito na minha cabeça. No estudo de lógica de programação, irei resolvendo os exercícios do livro e verificar se resolvi certo ou não via o link do github do autor, Gabriel, acima.
 
+A maneira como irei utilizar os livros acima, como esses livros não se baseam em algum projeto, mas, sim, puramente no conceito, então irei pegar os tópicos que aprendi no curso da Udemy e nela, quando realizar a revisão de JavaScript e TypeScript, ir para cada tópico dos livros que abordam o assunto que estou revisando e melhorar a qualidade do entendimento dela, realizando testes por código. Claro, estarei mencionando os livros na hora que estiver realizando a tal revisão.
+
 Outras referências complementares que irei lendo por fora, independente de qual linguagem de programação que eu esteja estudando, mas que são bons serem citados para o desencargo de consciência:
 
 - Fundamentos Matemáticos para a Ciências da Computação: Matemática Discreta e suas Aplicações - Sétima Edição, Judth L. Gersting.
