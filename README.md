@@ -46,5 +46,8 @@ Foi utilizada a seguinte extensão para possibilidar a execução dos arquivos l
 - Live Server
 
 # Projetos que consegui criar:
+Seguir a lista dos projetos que desenvolvi com o JavaScript, TypeScript ou os seus respectivos frameworks:
 
-## Nome do Projeto e as tecnologias usadas nela suas versões e o que precisa para rodar na máquina da pessoa:
+- reactjs-first-project (https://github.com/HelloWounderworld/reactjs-first-project)
+
+- WebSocket-Vue3 (https://github.com/HelloWounderworld/WebSocket-Vue3.git)
